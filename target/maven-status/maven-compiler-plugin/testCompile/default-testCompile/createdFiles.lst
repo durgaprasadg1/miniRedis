@@ -1,0 +1,3 @@
+com\miniredis\storage\RedisStorageTest.class
+com\miniredis\command\CommandParserTest.class
+com\miniredis\command\CommandDispatcherTest.class

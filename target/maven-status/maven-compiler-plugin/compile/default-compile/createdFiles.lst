@@ -1,2 +1,6 @@
 com\miniredis\server\MiniRedisServer.class
+com\miniredis\command\Command.class
+com\miniredis\command\CommandDispatcher.class
 com\miniredis\Main.class
+com\miniredis\storage\RedisStorage.class
+com\miniredis\command\CommandParser.class

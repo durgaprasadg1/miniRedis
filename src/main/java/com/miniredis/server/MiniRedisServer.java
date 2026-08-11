@@ -5,18 +5,24 @@ import java.net.*;
 import java.util.concurrent.*;
 
 import com.miniredis.storage.RedisStorage;
+import com.miniredis.command.Command;
+import com.miniredis.command.CommandDispatcher;
+import com.miniredis.command.CommandParser;
 
 
 public class MiniRedisServer {
     private final int port ;
     private final ExecutorService executor ;
     private final RedisStorage store ;
+    private final CommandParser parser;
+    private final CommandDispatcher dispatcher;
 
-    public MiniRedisServer(int port, int threadCount){
+    public MiniRedisServer(int port, int threadCount) {
         this.port = port;
         this.executor = Executors.newFixedThreadPool(threadCount);
-        store = new RedisStorage();
-
+        this.store = new RedisStorage();
+        this.parser = new CommandParser();
+        this.dispatcher = new CommandDispatcher(store);
     }
 
 
@@ -46,50 +52,10 @@ public class MiniRedisServer {
             while((request = reader.readLine()) != null){
                 System.out.println("Request "+ request);        
                 
+               Command command = parser.parse(request);
 
-                String[] parts = request.split(" ", 3);
-
-
-
-                if(parts[0].equalsIgnoreCase("PING")){
-                    writer.println("PONG");
-                }else if(parts[0].equalsIgnoreCase("SET")){
-                    int n = parts.length ;
-                    if(n != 3){
-                        writer.println("Err required 3 arguments received "+ n);
-                        continue;
-                    }
-
-                    String key = parts[1];
-                    String value = parts[2];
-                    store.set(key, value);
-                    writer.println("Ok");
-                    
-                }
-                else if(parts[0].equalsIgnoreCase("GET")){
-                    int n = parts.length ;
-
-                    if(n != 2){
-                        writer.println("Err required 2 arguments received "+ n);
-                        continue;
-                    }
-
-                    String key = parts[1];
-                   
-                    String value = store.get(key);
-
-                    if(value == null){
-                        writer.println("(nil)");
-                    }else{
-                        writer.println(value);
-                    }
-
-                    writer.println("Ok");
-                }
-                else{
-
-                    writer.println("ERR unknown command");
-                }
+                String response =  dispatcher.execute(command);
+                writer.println(response);
             }
             
         }
@@ -99,3 +65,4 @@ public class MiniRedisServer {
         System.out.println("client Disconnected ");
     }
 }
+

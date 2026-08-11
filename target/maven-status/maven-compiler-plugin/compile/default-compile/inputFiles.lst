@@ -1,2 +1,13 @@
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\Command.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandDispatcher.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandParser.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\DeleteHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\ExistsHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\GetHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PingHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\SetHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\SizeHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\Main.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\server\MiniRedisServer.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\storage\RedisStorage.java
