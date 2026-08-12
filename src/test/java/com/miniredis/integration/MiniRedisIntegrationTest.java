@@ -67,7 +67,7 @@ public class MiniRedisIntegrationTest {
 
         serverThread.start();
 
-        Thread.sleep(200);
+        server.awaitStartup();
 
         try (
                 Socket socket = new Socket("localhost", 6380);

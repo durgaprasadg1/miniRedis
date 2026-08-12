@@ -1,49 +1,92 @@
 package com.miniredis.server;
 
-import java.io.*;
-import java.net.*;
-import java.util.concurrent.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import com.miniredis.storage.RedisStorage;
 import com.miniredis.command.Command;
 import com.miniredis.command.CommandDispatcher;
 import com.miniredis.command.CommandParser;
-import com.miniredis.protocol.Encoder;
 import com.miniredis.protocol.Decoder;
+import com.miniredis.protocol.Encoder;
+import com.miniredis.storage.RedisStorage;
 
 public class MiniRedisServer {
+
     private final int port;
     private final ExecutorService executor;
     private final RedisStorage store;
+
     private final CommandParser parser;
     private final CommandDispatcher dispatcher;
+
+    private final Decoder decoder;
+    private final Encoder encoder;
+
+    private final CountDownLatch startupLatch = new CountDownLatch(1);
 
     private ServerSocket serverSocket;
 
     public MiniRedisServer(int port, int threadCount) {
+
         this.port = port;
+
         this.executor = Executors.newFixedThreadPool(threadCount);
+
         this.store = new RedisStorage();
+
         this.parser = new CommandParser();
+
         this.dispatcher = new CommandDispatcher(store);
+
+        this.decoder = new Decoder(parser);
+
+        this.encoder = new Encoder();
     }
 
     public void start() throws IOException {
 
         serverSocket = new ServerSocket(port);
-        System.out.println("Mini Redis server started on  : " + port);
+
+        startupLatch.countDown();
+
+        System.out.println(
+                "Mini Redis server started on : " + port);
 
         while (!serverSocket.isClosed()) {
 
-            Socket clientSocket = serverSocket.accept();
+            try {
 
-            System.out.println(
-                    "Client Connected "
-                            + clientSocket.getRemoteSocketAddress());
+                Socket clientSocket = serverSocket.accept();
 
-            executor.submit(
-                    () -> handleClient(clientSocket));
+                System.out.println(
+                        "Client Connected "
+                                + clientSocket.getRemoteSocketAddress());
+
+                executor.submit(
+                        () -> handleClient(clientSocket));
+
+            } catch (IOException e) {
+
+                if (serverSocket.isClosed()) {
+                    break;
+                }
+
+                throw e;
+            }
         }
+    }
+
+    public void awaitStartup()
+            throws InterruptedException {
+
+        startupLatch.await();
     }
 
     public void stop() throws IOException {
@@ -61,22 +104,24 @@ public class MiniRedisServer {
     }
 
     private void handleClient(Socket socket) {
-        try (socket;
-                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true) // an outoutStream , autoFlush
+        try (
+                socket;
 
-        ) {
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
 
-            CommandParser parser = new CommandParser();
-            Decoder decoder = new Decoder(parser);
-            Encoder encoder = new Encoder();
-
-            CommandDispatcher dispatcher = new CommandDispatcher(store);
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream(),
+                        true)) {
 
             String request;
+
             while ((request = reader.readLine()) != null) {
-                System.out.println("Request " + request);
+
+                System.out.println(
+                        "Request " + request);
 
                 Command command = decoder.decode(request);
 
@@ -89,8 +134,13 @@ public class MiniRedisServer {
             }
 
         } catch (IOException e) {
-            System.out.println("Client Error " + e.getMessage());
+
+            System.out.println(
+                    "Client Error " + e.getMessage());
         }
-        System.out.println("client Disconnected ");
+
+        System.out.println(
+                "Client Disconnected");
     }
+
 }
