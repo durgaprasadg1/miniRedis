@@ -1,14 +1,14 @@
 package com.miniredis.storage;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RedisStorage {
 
     private final Map<String, String> data;
 
     public RedisStorage() {
-        data = new HashMap<>();
+        data = new ConcurrentHashMap<>();
     }
 
     public void set(String key, String value) {
@@ -29,5 +29,18 @@ public class RedisStorage {
 
     public int size() {
         return data.size();
+    }
+
+    public synchronized int increment(String key) {
+
+        String value = get(key);
+
+        int number = Integer.parseInt(value);
+
+        number++;
+
+        set(key, String.valueOf(number));
+
+        return number;
     }
 }

@@ -98,4 +98,29 @@ public class RedisStorageTest {
 
         assertEquals(1, storage.size());
     }
+
+    @Test
+    void shouldIncrementValue() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("counter", "10");
+
+        assertEquals(11, storage.increment("counter"));
+        assertEquals("11", storage.get("counter"));
+    }
+
+    @Test
+    void shouldIncrementMultipleTimes() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("counter", "0");
+
+        storage.increment("counter");
+        storage.increment("counter");
+        storage.increment("counter");
+
+        assertEquals("3", storage.get("counter"));
+    }
 }

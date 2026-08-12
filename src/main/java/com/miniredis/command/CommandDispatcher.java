@@ -5,6 +5,7 @@ import com.miniredis.command.handler.SizeHandler;
 import com.miniredis.command.handler.DeleteHandler;
 import com.miniredis.command.handler.ExistsHandler;
 import com.miniredis.command.handler.GetHandler;
+import com.miniredis.command.handler.IncrementHandler;
 import com.miniredis.command.handler.PingHandler;
 import com.miniredis.command.handler.SetHandler;
 
@@ -23,6 +24,7 @@ public class CommandDispatcher {
         handlers.put("DEL", new DeleteHandler(store));
         handlers.put("EXISTS", new ExistsHandler(store));
         handlers.put("SIZE", new SizeHandler(store));
+        handlers.put("INCR", new IncrementHandler(store));
     }
 
     public String execute(Command command) {

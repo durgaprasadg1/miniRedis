@@ -1,3 +1,7 @@
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\command\CommandDispatcherTest.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\command\CommandParserTest.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\concurrency\ConcurrencyExperimentTest.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\concurrency\RedisStorageConcurrencyTest.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\integration\MiniRedisIntegrationTest.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\protocol\DecoderTest.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\test\java\com\miniredis\storage\RedisStorageTest.java

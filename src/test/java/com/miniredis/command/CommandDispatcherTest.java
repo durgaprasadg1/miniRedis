@@ -165,4 +165,42 @@ public class CommandDispatcherTest {
 
         assertEquals("2", response);
     }
+
+    @Test
+    void shouldExecuteIncrement() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("counter", "10");
+
+        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+        Command command = new Command(
+                "INCR",
+                List.of("counter"));
+
+        String response = dispatcher.execute(command);
+
+        assertEquals("11", response);
+    }
+
+    @Test
+    void shouldRejectNonIntegerValue() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("name", "durga");
+
+        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+        Command command = new Command(
+                "INCR",
+                List.of("name"));
+
+        String response = dispatcher.execute(command);
+
+        assertEquals(
+                "ERR value is not an integer",
+                response);
+    }
 }
