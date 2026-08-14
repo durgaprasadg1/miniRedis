@@ -203,4 +203,64 @@ public class CommandDispatcherTest {
                 "ERR value is not an integer",
                 response);
     }
+
+    @Test
+    void shouldExecuteDecr() {
+
+        RedisStorage storage = new RedisStorage();
+
+        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+        dispatcher.execute(
+                new Command(
+                        "SET",
+                        List.of("counter", "10")));
+
+        String response = dispatcher.execute(
+                new Command(
+                        "DECR",
+                        List.of("counter")));
+
+        assertEquals("9", response);
+    }
+
+    @Test
+    void shouldExecuteIncrBy() {
+
+        RedisStorage storage = new RedisStorage();
+
+        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+        dispatcher.execute(
+                new Command(
+                        "SET",
+                        List.of("counter", "10")));
+
+        String response = dispatcher.execute(
+                new Command(
+                        "INCRBY",
+                        List.of("counter", "5")));
+
+        assertEquals("15", response);
+    }
+
+    @Test
+    void shouldExecuteDecrBy() {
+
+        RedisStorage storage = new RedisStorage();
+
+        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+        dispatcher.execute(
+                new Command(
+                        "SET",
+                        List.of("counter", "10")));
+
+        String response = dispatcher.execute(
+                new Command(
+                        "DECRBY",
+                        List.of("counter", "4")));
+
+        assertEquals("6", response);
+    }
 }

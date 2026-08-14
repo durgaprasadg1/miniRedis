@@ -2,9 +2,12 @@ C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\co
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandDispatcher.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\CommandParser.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\DecrementByHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\DecrementHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\DeleteHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\ExistsHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\GetHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\IncrementByHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\IncrementHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PingHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\SetHandler.java

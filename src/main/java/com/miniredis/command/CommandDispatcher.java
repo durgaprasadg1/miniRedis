@@ -8,6 +8,9 @@ import com.miniredis.command.handler.GetHandler;
 import com.miniredis.command.handler.IncrementHandler;
 import com.miniredis.command.handler.PingHandler;
 import com.miniredis.command.handler.SetHandler;
+import com.miniredis.command.handler.DecrementHandler;
+import com.miniredis.command.handler.IncrementByHandler;
+import com.miniredis.command.handler.DecrementByHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +28,9 @@ public class CommandDispatcher {
         handlers.put("EXISTS", new ExistsHandler(store));
         handlers.put("SIZE", new SizeHandler(store));
         handlers.put("INCR", new IncrementHandler(store));
+        handlers.put("DECR", new DecrementHandler(store));
+        handlers.put("INCRBY", new IncrementByHandler(store));
+        handlers.put("DECRBY", new DecrementByHandler(store));
     }
 
     public String execute(Command command) {
