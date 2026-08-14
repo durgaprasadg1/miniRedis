@@ -31,7 +31,11 @@ public class RedisStorage {
         return data.size();
     }
 
-    public synchronized int increment(String key) {
+    public int increment(String key) {
+        return change(key, 1);
+    }
+
+    public synchronized int change(String key, int delta) {
 
         String value = get(key);
 
@@ -43,7 +47,7 @@ public class RedisStorage {
             number = Integer.parseInt(value);
         }
 
-        number++;
+        number += delta;
 
         set(key, String.valueOf(number));
 

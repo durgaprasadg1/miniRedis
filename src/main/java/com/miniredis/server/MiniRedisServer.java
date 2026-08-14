@@ -53,24 +53,14 @@ public class MiniRedisServer {
     public void start() throws IOException {
 
         serverSocket = new ServerSocket(port);
-
         startupLatch.countDown();
-
-        System.out.println(
-                "Mini Redis server started on : " + port);
+        System.out.println("Mini Redis server started on : " + port);
 
         while (!serverSocket.isClosed()) {
-
             try {
-
                 Socket clientSocket = serverSocket.accept();
-
-                System.out.println(
-                        "Client Connected "
-                                + clientSocket.getRemoteSocketAddress());
-
-                executor.submit(
-                        () -> handleClient(clientSocket));
+                System.out.println("Client Connected " + clientSocket.getRemoteSocketAddress());
+                executor.submit(() -> handleClient(clientSocket));
 
             } catch (IOException e) {
 
@@ -107,23 +97,18 @@ public class MiniRedisServer {
 
         try (
                 socket;
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(
-                                socket.getInputStream()));
-
-                PrintWriter writer = new PrintWriter(
-                        socket.getOutputStream(),
-                        true)) {
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
 
             String request;
 
-            while ((request = reader.readLine()) != null) {
+            Command command;
+
+            while ((command = decoder.decode(reader)) != null) {
 
                 System.out.println(
-                        "Request " + request);
-
-                Command command = decoder.decode(request);
+                        "Request " + command.getName());
 
                 String response = dispatcher.execute(command);
 

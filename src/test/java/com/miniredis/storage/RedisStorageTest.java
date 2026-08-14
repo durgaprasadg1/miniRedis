@@ -123,4 +123,30 @@ public class RedisStorageTest {
 
         assertEquals("3", storage.get("counter"));
     }
+
+    @Test
+    void changeShouldIncrement() {
+
+        RedisStorage storage = new RedisStorage();
+
+        assertEquals(1, storage.change("counter", 1));
+
+        assertEquals(6, storage.change("counter", 5));
+    }
+
+    @Test
+    void changeShouldDecrement() {
+
+        RedisStorage storage = new RedisStorage();
+        assertEquals(-1, storage.change("counter", -1));
+        assertEquals(-6, storage.change("counter", -5));
+    }
+
+    @Test
+    void changeShouldRejectNonInteger() {
+
+        RedisStorage storage = new RedisStorage();
+        storage.set("counter", "hello");
+        assertThrows(NumberFormatException.class, () -> storage.change("counter", 1));
+    }
 }
