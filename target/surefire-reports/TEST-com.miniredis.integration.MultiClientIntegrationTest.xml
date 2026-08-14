@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.command.CommandDispatcherTest" time="0.119" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.MultiClientIntegrationTest" time="0.017" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,15 +59,49 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="shouldRejectUnknownCommand" classname="com.miniredis.command.CommandDispatcherTest" time="0.05"/>
-  <testcase name="shouldExecuteDbSize" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldExecuteDelete" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteExists" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteGet" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldExecuteSet" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecutePing" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldRejectNonIntegerValue" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteIncrement" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldReturnZeroWhenDeletingMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldReturnZeroForMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldHandleMultipleClients" classname="com.miniredis.integration.MultiClientIntegrationTest" time="0.014">
+    <system-out><![CDATA[Mini Redis server started on : 6380
+Client Connected /127.0.0.1:56676
+Client Connected /127.0.0.1:56673
+Client Connected /127.0.0.1:56675
+Client Connected /127.0.0.1:56674
+Client Connected /127.0.0.1:56677
+Client Connected /127.0.0.1:56678
+Client Connected /127.0.0.1:56679
+Client Connected /127.0.0.1:56680
+Client Connected /127.0.0.1:56681
+Request SET client-0 value-0
+Request SET client-3 value-3
+Request SET client-1 value-1
+Request SET client-2 value-2
+Client Connected /127.0.0.1:56682
+Request GET client-3
+Request GET client-0
+Request GET client-1
+Request GET client-2
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Request SET client-7 value-7
+Request SET client-6 value-6
+Request SET client-8 value-8
+Request SET client-5 value-5
+Request GET client-7
+Request GET client-8
+Request GET client-5
+Request GET client-6
+Client Disconnected
+Client Disconnected
+Request SET client-9 value-9
+Client Disconnected
+Request SET client-4 value-4
+Client Disconnected
+Request GET client-9
+Request GET client-4
+Client Disconnected
+Mini Redis server stopped
+Client Disconnected
+]]></system-out>
+  </testcase>
 </testsuite>

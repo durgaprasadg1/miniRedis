@@ -35,7 +35,13 @@ public class RedisStorage {
 
         String value = get(key);
 
-        int number = Integer.parseInt(value);
+        int number;
+
+        if (value == null) {
+            number = 0;
+        } else {
+            number = Integer.parseInt(value);
+        }
 
         number++;
 

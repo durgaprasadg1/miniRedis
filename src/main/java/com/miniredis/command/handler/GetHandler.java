@@ -22,7 +22,7 @@ public class GetHandler implements CommandHandler {
         String val = store.get(key);
 
         if (val == null) {
-            return "null";
+            return "(nil)";
         }
         return val;
     }

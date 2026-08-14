@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.RedisTcpConcurrencyTest" time="0.052" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="26"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="26"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire3071875062028763492\surefirebooter-20260814222213871_3.jar C:\Users\PC\AppData\Local\Temp\surefire3071875062028763492 2026-08-14T22-22-13_594-jvmRun1 surefire-20260814222213871_1tmp surefire_0-20260814222213871_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\PC"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-04-21"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-26.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire3071875062028763492\surefirebooter-20260814222213871_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="26.0.1+8-34"/>
+    <property name="user.name" value="PC"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\PC\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\PC\AppData\Local\Temp\"/>
+    <property name="java.version" value="26.0.1"/>
+    <property name="user.dir" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;c:\Users\PC\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\PC\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;%JAVA_HOME%\bin;C:\Users\PC\Documents\ELK\elasticsearch-9.4.3-windows-x86_64\elasticsearch-9.4.3\bin;C:\Users\PC\Documents\ELK\kibana-9.4.3-windows-x86_64\kibana-9.4.3\bin;C:\Users\PC\Documents\ELK\logstash-9.4.3-windows-x86_64\logstash-9.4.3\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Users\PC\.local\bin;C:\Users\PC\AppData\Local\Microsoft\WindowsApps;C:\Users\PC\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\PC\AppData\Roaming\npm;C:\Program Files\Git\cmd;C:\Users\PC\AppData\Local\Microsoft\WinGet\Packages\sxyazi.yazi_Microsoft.Winget.Source_8wekyb3d8bbwe\yazi-x86_64-pc-windows-msvc;C:\Users\PC\AppData\Local\Microsoft\WinGet\Packages\ajeetdsouza.zoxide_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Users\PC\AppData\Local\Programs\Antigravity IDE\bin;C:\Users\PC\AppData\Local\Python\bin;C:\Program Files\Java\jdk-26.0.1\bin;C:\Users\PC\AppData\Roaming\npm;C:\Users\PC\Downloads\terraform_1.15.8_windows_386;C:\Users\PC\Desktop\Code\maven_Ext\apache-maven-3.9.16\bin;c:\Users\PC\.vscode\extensions\vscjava.vscode-java-debug-0.59.0\bundled\scripts\noConfigScripts;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="26.0.1+8-34"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="70.0"/>
+  </properties>
+  <testcase name="concurrentTcpIncrementsShouldBeCorrect" classname="com.miniredis.integration.RedisTcpConcurrencyTest" time="0.049">
+    <system-out><![CDATA[Mini Redis server started on : 6380
+Client Connected /127.0.0.1:56684
+Client Connected /127.0.0.1:56683
+Client Connected /127.0.0.1:56685
+Client Connected /127.0.0.1:56686
+Client Connected /127.0.0.1:56687
+Client Connected /127.0.0.1:56688
+Client Connected /127.0.0.1:56689
+Client Connected /127.0.0.1:56690
+Client Connected /127.0.0.1:56691
+Request INCR counter
+Client Connected /127.0.0.1:56692
+Client Connected /127.0.0.1:56693
+Client Connected /127.0.0.1:56694
+Request INCR counter
+Request INCR counter
+Request INCR counter
+Client Connected /127.0.0.1:56695
+Client Disconnected
+Client Connected /127.0.0.1:56696
+Request INCR counter
+Client Connected /127.0.0.1:56697
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56699
+Client Disconnected
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56700
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56702
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56701
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56704
+Client Disconnected
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56703
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56705
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56706
+Request INCR counter
+Client Connected /127.0.0.1:56707
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56708
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56709
+Request INCR counter
+Client Connected /127.0.0.1:56710
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56711
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56712
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56713
+Request INCR counter
+Client Connected /127.0.0.1:56714
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56715
+Request INCR counter
+Client Connected /127.0.0.1:56716
+Client Connected /127.0.0.1:56718
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56717
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56719
+Client Disconnected
+Client Connected /127.0.0.1:56720
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56721
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56722
+Request INCR counter
+Client Connected /127.0.0.1:56723
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56698
+Client Disconnected
+Client Connected /127.0.0.1:56724
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56725
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56726
+Client Connected /127.0.0.1:56727
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56728
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56730
+Request INCR counter
+Client Connected /127.0.0.1:56729
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56731
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56732
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56733
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56734
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56736
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56735
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56739
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56737
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56738
+Request INCR counter
+Client Connected /127.0.0.1:56740
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56742
+Request INCR counter
+Client Connected /127.0.0.1:56741
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56743
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56744
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56745
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56746
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56747
+Request INCR counter
+Client Connected /127.0.0.1:56750
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56749
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56752
+Request INCR counter
+Client Connected /127.0.0.1:56751
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56748
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56754
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56753
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56755
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56756
+Client Connected /127.0.0.1:56757
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56758
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56759
+Client Connected /127.0.0.1:56760
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56761
+Client Connected /127.0.0.1:56762
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56763
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56764
+Client Connected /127.0.0.1:56765
+Request INCR counter
+Client Connected /127.0.0.1:56766
+Request INCR counter
+Client Disconnected
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56767
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56768
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56769
+Request INCR counter
+Client Connected /127.0.0.1:56770
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56772
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56771
+Request INCR counter
+Client Disconnected
+Client Connected /127.0.0.1:56773
+Client Disconnected
+Client Connected /127.0.0.1:56774
+Request INCR counter
+Client Connected /127.0.0.1:56775
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Client Connected /127.0.0.1:56777
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56776
+Client Disconnected
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56778
+Client Disconnected
+Request INCR counter
+Client Connected /127.0.0.1:56779
+Request INCR counter
+Client Connected /127.0.0.1:56780
+Client Connected /127.0.0.1:56781
+Client Disconnected
+Request INCR counter
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56782
+Request INCR counter
+Client Disconnected
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:56783
+Request GET counter
+Mini Redis server stopped
+Client Disconnected
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -98,4 +98,82 @@ public class MiniRedisIntegrationTest {
             serverThread.join(1000);
         }
     }
+
+    @Test
+    void shouldHandleMultipleCommandsOverSameConnection()
+            throws Exception {
+
+        MiniRedisServer server = new MiniRedisServer(6380, 4);
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        serverThread.start();
+
+        server.awaitStartup();
+
+        try (
+                Socket socket = new Socket("localhost", 6380);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream(),
+                        true)) {
+
+            // SET
+            writer.println("SET name durga");
+
+            assertEquals(
+                    "OK",
+                    reader.readLine());
+
+            // GET
+            writer.println("GET name");
+
+            assertEquals(
+                    "durga",
+                    reader.readLine());
+
+            // EXISTS
+            writer.println("EXISTS name");
+
+            assertEquals(
+                    "1",
+                    reader.readLine());
+
+            // DELETE
+            writer.println("DEL name");
+
+            assertEquals(
+                    "1",
+                    reader.readLine());
+
+            // EXISTS after DELETE
+            writer.println("EXISTS name");
+
+            assertEquals(
+                    "0",
+                    reader.readLine());
+
+            // GET after DELETE
+            writer.println("GET name");
+
+            assertEquals(
+                    "(nil)",
+                    reader.readLine());
+
+        } finally {
+
+            server.stop();
+            serverThread.join();
+        }
+    }
 }
