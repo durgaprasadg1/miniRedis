@@ -176,4 +176,106 @@ public class MiniRedisIntegrationTest {
             serverThread.join();
         }
     }
+
+    @Test
+    void shouldHandleMultipleCommandsInSingleWrite()
+            throws Exception {
+
+        MiniRedisServer server = new MiniRedisServer(6380, 4);
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        serverThread.start();
+
+        server.awaitStartup();
+
+        try (
+                Socket socket = new Socket("localhost", 6380);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream())) {
+
+            writer.print(
+                    "PING\nGET name\n");
+
+            writer.flush();
+
+            assertEquals(
+                    "PONG",
+                    reader.readLine());
+
+            assertEquals(
+                    "(nil)",
+                    reader.readLine());
+
+        } finally {
+
+            server.stop();
+
+            serverThread.join();
+        }
+    }
+
+    @Test
+    void shouldHandleFragmentedCommand()
+            throws Exception {
+
+        MiniRedisServer server = new MiniRedisServer(6380, 4);
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        serverThread.start();
+
+        server.awaitStartup();
+
+        try (
+                Socket socket = new Socket("localhost", 6380);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream())) {
+
+            writer.print("SET na");
+            writer.flush();
+
+            writer.print("me durga\n");
+            writer.flush();
+
+            assertEquals(
+                    "OK",
+                    reader.readLine());
+
+            writer.print("GET name\n");
+            writer.flush();
+
+            assertEquals(
+                    "durga",
+                    reader.readLine());
+
+        } finally {
+
+            server.stop();
+
+            serverThread.join();
+        }
+    }
 }
