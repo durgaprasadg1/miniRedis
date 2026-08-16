@@ -14,7 +14,7 @@ public class TtlHandler implements CommandHandler {
     @Override
     public String execute(Command command) {
 
-        if (command.getArguments().size() != -1) {
+        if (command.getArguments().size() != 1) {
             return "ERR wrong number of arguments ";
         }
         String key = command.getArguments().get(0);

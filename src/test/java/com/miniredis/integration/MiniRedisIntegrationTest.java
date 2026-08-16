@@ -8,6 +8,7 @@ import java.io.*;
 import java.net.Socket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MiniRedisIntegrationTest {
 
@@ -275,6 +276,53 @@ public class MiniRedisIntegrationTest {
 
             server.stop();
 
+            serverThread.join();
+        }
+    }
+
+    @Test
+    void shouldHandleTtlOverTcp() throws Exception {
+
+        MiniRedisServer server = new MiniRedisServer(6380, 4);
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        serverThread.start();
+        server.awaitStartup();
+
+        try (
+                Socket socket = new Socket("localhost", 6380);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream(),
+                        true)) {
+
+            writer.println("SET name durga");
+            assertEquals("OK", reader.readLine());
+
+            writer.println("EXPIRE name 5");
+            assertEquals("1", reader.readLine());
+
+            writer.println("TTL name");
+
+            int ttl = Integer.parseInt(
+                    reader.readLine());
+
+            assertTrue(ttl > 0 && ttl <= 5);
+
+        } finally {
+
+            server.stop();
             serverThread.join();
         }
     }
