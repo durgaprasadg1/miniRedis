@@ -11,6 +11,9 @@ import com.miniredis.command.handler.SetHandler;
 import com.miniredis.command.handler.DecrementHandler;
 import com.miniredis.command.handler.IncrementByHandler;
 import com.miniredis.command.handler.DecrementByHandler;
+import com.miniredis.command.handler.ExpireHandler;
+import com.miniredis.command.handler.TtlHandler;
+import com.miniredis.command.handler.PersistHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +34,9 @@ public class CommandDispatcher {
         handlers.put("DECR", new DecrementHandler(store));
         handlers.put("INCRBY", new IncrementByHandler(store));
         handlers.put("DECRBY", new DecrementByHandler(store));
+        handlers.put("EXPIRE", new ExpireHandler(store));
+        handlers.put("TTL", new TtlHandler(store));
+        handlers.put("PERSIST", new PersistHandler(store));
     }
 
     public String execute(Command command) {

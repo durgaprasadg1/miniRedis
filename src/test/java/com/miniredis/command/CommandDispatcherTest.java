@@ -10,257 +10,333 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CommandDispatcherTest {
 
-    @Test
-    void shouldExecutePing() {
+        @Test
+        void shouldExecutePing() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command("PING", List.of());
+                Command command = new Command("PING", List.of());
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("PONG", response);
-    }
+                assertEquals("PONG", response);
+        }
 
-    @Test
-    void shouldExecuteSet() {
+        @Test
+        void shouldExecuteSet() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "SET",
-                List.of("name", "durga"));
+                Command command = new Command(
+                                "SET",
+                                List.of("name", "durga"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("OK", response);
+                assertEquals("OK", response);
 
-        assertEquals(
-                "durga",
-                storage.get("name"));
-    }
+                assertEquals(
+                                "durga",
+                                storage.get("name"));
+        }
 
-    @Test
-    void shouldExecuteGet() {
+        @Test
+        void shouldExecuteGet() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("name", "durga");
+                storage.set("name", "durga");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "GET",
-                List.of("name"));
+                Command command = new Command(
+                                "GET",
+                                List.of("name"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("durga", response);
-    }
+                assertEquals("durga", response);
+        }
 
-    @Test
-    void shouldRejectUnknownCommand() {
+        @Test
+        void shouldRejectUnknownCommand() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "HELLO",
-                List.of());
+                Command command = new Command(
+                                "HELLO",
+                                List.of());
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals(
-                "ERR unknown command",
-                response);
-    }
+                assertEquals(
+                                "ERR unknown command",
+                                response);
+        }
 
-    @Test
-    void shouldExecuteDelete() {
+        @Test
+        void shouldExecuteDelete() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("name", "durga");
+                storage.set("name", "durga");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "DEL",
-                List.of("name"));
+                Command command = new Command(
+                                "DEL",
+                                List.of("name"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("1", response);
-        assertNull(storage.get("name"));
-    }
+                assertEquals("1", response);
+                assertNull(storage.get("name"));
+        }
 
-    @Test
-    void shouldReturnZeroWhenDeletingMissingKey() {
+        @Test
+        void shouldReturnZeroWhenDeletingMissingKey() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "DEL",
-                List.of("missing"));
+                Command command = new Command(
+                                "DEL",
+                                List.of("missing"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("0", response);
-    }
+                assertEquals("0", response);
+        }
 
-    @Test
-    void shouldExecuteExists() {
+        @Test
+        void shouldExecuteExists() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("name", "durga");
+                storage.set("name", "durga");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "EXISTS",
-                List.of("name"));
+                Command command = new Command(
+                                "EXISTS",
+                                List.of("name"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("1", response);
-    }
+                assertEquals("1", response);
+        }
 
-    @Test
-    void shouldReturnZeroForMissingKey() {
+        @Test
+        void shouldReturnZeroForMissingKey() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "EXISTS",
-                List.of("missing"));
+                Command command = new Command(
+                                "EXISTS",
+                                List.of("missing"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("0", response);
-    }
+                assertEquals("0", response);
+        }
 
-    @Test
-    void shouldExecuteDbSize() {
+        @Test
+        void shouldExecuteDbSize() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("a", "10");
-        storage.set("b", "20");
+                storage.set("a", "10");
+                storage.set("b", "20");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command("SIZE", List.of());
+                Command command = new Command("SIZE", List.of());
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("2", response);
-    }
+                assertEquals("2", response);
+        }
 
-    @Test
-    void shouldExecuteIncrement() {
+        @Test
+        void shouldExecuteIncrement() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("counter", "10");
+                storage.set("counter", "10");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "INCR",
-                List.of("counter"));
+                Command command = new Command(
+                                "INCR",
+                                List.of("counter"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals("11", response);
-    }
+                assertEquals("11", response);
+        }
 
-    @Test
-    void shouldRejectNonIntegerValue() {
+        @Test
+        void shouldRejectNonIntegerValue() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        storage.set("name", "durga");
+                storage.set("name", "durga");
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        Command command = new Command(
-                "INCR",
-                List.of("name"));
+                Command command = new Command(
+                                "INCR",
+                                List.of("name"));
 
-        String response = dispatcher.execute(command);
+                String response = dispatcher.execute(command);
 
-        assertEquals(
-                "ERR value is not an integer",
-                response);
-    }
+                assertEquals(
+                                "ERR value is not an integer",
+                                response);
+        }
 
-    @Test
-    void shouldExecuteDecr() {
+        @Test
+        void shouldExecuteDecr() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        dispatcher.execute(
-                new Command(
-                        "SET",
-                        List.of("counter", "10")));
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("counter", "10")));
 
-        String response = dispatcher.execute(
-                new Command(
-                        "DECR",
-                        List.of("counter")));
+                String response = dispatcher.execute(
+                                new Command(
+                                                "DECR",
+                                                List.of("counter")));
 
-        assertEquals("9", response);
-    }
+                assertEquals("9", response);
+        }
 
-    @Test
-    void shouldExecuteIncrBy() {
+        @Test
+        void shouldExecuteIncrBy() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        dispatcher.execute(
-                new Command(
-                        "SET",
-                        List.of("counter", "10")));
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("counter", "10")));
 
-        String response = dispatcher.execute(
-                new Command(
-                        "INCRBY",
-                        List.of("counter", "5")));
+                String response = dispatcher.execute(
+                                new Command(
+                                                "INCRBY",
+                                                List.of("counter", "5")));
 
-        assertEquals("15", response);
-    }
+                assertEquals("15", response);
+        }
 
-    @Test
-    void shouldExecuteDecrBy() {
+        @Test
+        void shouldExecuteDecrBy() {
 
-        RedisStorage storage = new RedisStorage();
+                RedisStorage storage = new RedisStorage();
 
-        CommandDispatcher dispatcher = new CommandDispatcher(storage);
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
-        dispatcher.execute(
-                new Command(
-                        "SET",
-                        List.of("counter", "10")));
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("counter", "10")));
 
-        String response = dispatcher.execute(
-                new Command(
-                        "DECRBY",
-                        List.of("counter", "4")));
+                String response = dispatcher.execute(
+                                new Command(
+                                                "DECRBY",
+                                                List.of("counter", "4")));
 
-        assertEquals("6", response);
-    }
+                assertEquals("6", response);
+        }
+
+        @Test
+        void shouldExecuteExpire() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "EXPIRE",
+                                                List.of("name", "10")));
+
+                assertEquals("1", response);
+        }
+
+        @Test
+        void shouldExecuteTtl() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                dispatcher.execute(
+                                new Command(
+                                                "EXPIRE",
+                                                List.of("name", "10")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "TTL",
+                                                List.of("name")));
+
+                assertTrue(
+                                Integer.parseInt(response) > 0);
+        }
+
+        @Test
+        void shouldExecutePersist() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                dispatcher.execute(
+                                new Command(
+                                                "EXPIRE",
+                                                List.of("name", "10")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "PERSIST",
+                                                List.of("name")));
+
+                assertEquals("1", response);
+
+                assertEquals(
+                                "-1",
+                                dispatcher.execute(
+                                                new Command(
+                                                                "TTL",
+                                                                List.of("name"))));
+        }
+
 }
