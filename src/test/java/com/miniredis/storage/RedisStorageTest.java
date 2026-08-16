@@ -149,4 +149,54 @@ public class RedisStorageTest {
         storage.set("counter", "hello");
         assertThrows(NumberFormatException.class, () -> storage.change("counter", 1));
     }
+
+    @Test
+    void expireShouldReturnZeroForMissingKey() {
+
+        RedisStorage storage = new RedisStorage();
+
+        assertEquals(
+                0,
+                storage.expire("name", 10));
+    }
+
+    @Test
+    void ttlShouldReturnMinusOneWithoutExpiration() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("name", "durga");
+
+        assertEquals(
+                -1,
+                storage.ttl("name"));
+    }
+
+    @Test
+    void ttlShouldReturnMinusTwoForMissingKey() {
+
+        RedisStorage storage = new RedisStorage();
+
+        assertEquals(
+                -2,
+                storage.ttl("name"));
+    }
+
+    @Test
+    void persistShouldRemoveExpiration() {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("name", "durga");
+
+        storage.expire("name", 10);
+
+        assertEquals(
+                1,
+                storage.persist("name"));
+
+        assertEquals(
+                -1,
+                storage.ttl("name"));
+    }
 }
