@@ -16,4 +16,6 @@ C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\Ma
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\protocol\Decoder.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\protocol\Encoder.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\server\MiniRedisServer.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\storage\DataType.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\storage\Entry.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\storage\RedisStorage.java

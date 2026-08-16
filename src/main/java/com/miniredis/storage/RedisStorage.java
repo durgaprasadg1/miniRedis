@@ -56,6 +56,7 @@ public class RedisStorage {
         if (entry == null) {
             number = 0;
             entry = new Entry(DataType.STRING, "0");
+            data.put(key, entry);
         } else {
             if (entry.getType() != DataType.STRING) {
                 throw new IllegalStateException("WrongType");

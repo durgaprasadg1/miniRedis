@@ -199,4 +199,23 @@ public class RedisStorageTest {
                 -1,
                 storage.ttl("name"));
     }
+
+    @Test
+    void expiredKeyShouldBehaveAsMissing() throws InterruptedException {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("name", "durga");
+
+        storage.expire("name", 1);
+
+        Thread.sleep(1100);
+
+        assertNull(
+                storage.get("name"));
+
+        assertEquals(
+                0,
+                storage.exists("name"));
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.RedisTcpConcurrencyTest" time="0.048" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.RedisTcpConcurrencyTest" time="0.049" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire2157511338292443389\surefirebooter-20260814230750468_3.jar C:\Users\PC\AppData\Local\Temp\surefire2157511338292443389 2026-08-14T23-07-50_240-jvmRun1 surefire-20260814230750468_1tmp surefire_0-20260814230750468_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire16139834014182031032\surefirebooter-20260816231526984_3.jar C:\Users\PC\AppData\Local\Temp\surefire16139834014182031032 2026-08-16T23-15-26_828-jvmRun1 surefire-20260816231526984_1tmp surefire_0-20260816231526984_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire2157511338292443389\surefirebooter-20260814230750468_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire16139834014182031032\surefirebooter-20260816231526984_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -61,307 +61,307 @@
   </properties>
   <testcase name="concurrentTcpIncrementsShouldBeCorrect" classname="com.miniredis.integration.RedisTcpConcurrencyTest" time="0.045">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:63692
-Client Connected /127.0.0.1:63693
-Client Connected /127.0.0.1:63691
-Client Connected /127.0.0.1:63695
-Client Connected /127.0.0.1:63694
-Client Connected /127.0.0.1:63696
-Client Connected /127.0.0.1:63697
-Client Connected /127.0.0.1:63698
-Client Connected /127.0.0.1:63700
-Client Connected /127.0.0.1:63699
+Client Connected /127.0.0.1:59859
+Client Connected /127.0.0.1:59860
+Client Connected /127.0.0.1:59861
+Client Connected /127.0.0.1:59858
+Client Connected /127.0.0.1:59862
+Client Connected /127.0.0.1:59863
+Client Connected /127.0.0.1:59864
+Client Connected /127.0.0.1:59865
+Client Connected /127.0.0.1:59866
+Client Connected /127.0.0.1:59867
+Client Connected /127.0.0.1:59868
+Client Connected /127.0.0.1:59869
+Client Connected /127.0.0.1:59870
+Client Connected /127.0.0.1:59871
 Request INCR
-Client Connected /127.0.0.1:63701
-Client Connected /127.0.0.1:63702
 Request INCR
-Client Connected /127.0.0.1:63703
+Client Connected /127.0.0.1:59872
 Request INCR
-Request INCR
-Client Connected /127.0.0.1:63704
-Client Disconnected
-Client Connected /127.0.0.1:63705
-Client Disconnected
-Client Connected /127.0.0.1:63706
 Client Disconnected
-Request INCR
+Client Connected /127.0.0.1:59873
 Client Disconnected
-Request INCR
 Request INCR
 Request INCR
-Client Connected /127.0.0.1:63707
+Client Connected /127.0.0.1:59875
 Client Disconnected
+Client Connected /127.0.0.1:59876
+Client Connected /127.0.0.1:59877
 Client Disconnected
 Request INCR
+Client Connected /127.0.0.1:59874
+Client Connected /127.0.0.1:59878
+Client Connected /127.0.0.1:59879
+Request INCR
+Client Connected /127.0.0.1:59880
+Client Disconnected
 Client Disconnected
 Client Disconnected
 Request INCR
 Request INCR
-Client Connected /127.0.0.1:63708
 Request INCR
+Client Connected /127.0.0.1:59881
 Client Disconnected
-Client Disconnected
-Client Disconnected
-Client Connected /127.0.0.1:63709
+Client Connected /127.0.0.1:59882
 Request INCR
 Client Disconnected
-Request INCR
-Client Connected /127.0.0.1:63710
+Client Connected /127.0.0.1:59883
+Client Connected /127.0.0.1:59884
+Client Connected /127.0.0.1:59885
+Client Disconnected
+Client Connected /127.0.0.1:59886
 Request INCR
-Client Connected /127.0.0.1:63712
 Client Disconnected
-Client Connected /127.0.0.1:63711
 Client Disconnected
 Request INCR
-Client Connected /127.0.0.1:63713
-Client Connected /127.0.0.1:63714
 Request INCR
-Client Disconnected
-Client Connected /127.0.0.1:63715
-Client Connected /127.0.0.1:63716
+Client Connected /127.0.0.1:59887
+Request INCR
 Client Disconnected
 Request INCR
+Client Disconnected
 Request INCR
-Client Connected /127.0.0.1:63717
+Client Connected /127.0.0.1:59888
 Request INCR
-Client Connected /127.0.0.1:63718
 Client Disconnected
-Client Disconnected
-Client Connected /127.0.0.1:63719
+Client Connected /127.0.0.1:59889
 Request INCR
+Client Connected /127.0.0.1:59890
 Client Disconnected
 Request INCR
+Client Disconnected
+Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63721
 Request INCR
 Request INCR
+Client Connected /127.0.0.1:59891
+Client Connected /127.0.0.1:59892
 Client Disconnected
+Client Connected /127.0.0.1:59893
+Request INCR
 Client Disconnected
+Client Connected /127.0.0.1:59894
 Request INCR
+Client Connected /127.0.0.1:59895
+Client Disconnected
+Client Connected /127.0.0.1:59896
+Client Connected /127.0.0.1:59897
 Request INCR
 Client Disconnected
+Client Connected /127.0.0.1:59898
 Client Disconnected
 Request INCR
 Request INCR
 Client Disconnected
 Request INCR
-Client Disconnected
-Client Disconnected
+Client Connected /127.0.0.1:59899
+Client Connected /127.0.0.1:59900
+Client Connected /127.0.0.1:59901
 Client Disconnected
-Client Connected /127.0.0.1:63720
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63722
 Request INCR
-Client Connected /127.0.0.1:63723
 Request INCR
-Client Connected /127.0.0.1:63724
-Client Connected /127.0.0.1:63725
+Client Connected /127.0.0.1:59902
+Client Disconnected
+Client Disconnected
+Client Connected /127.0.0.1:59903
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63726
+Client Connected /127.0.0.1:59904
+Request INCR
 Request INCR
+Client Connected /127.0.0.1:59905
 Client Disconnected
-Client Connected /127.0.0.1:63727
 Client Disconnected
-Client Connected /127.0.0.1:63728
-Client Connected /127.0.0.1:63729
 Client Disconnected
-Client Connected /127.0.0.1:63731
 Request INCR
-Request INCR
 Client Disconnected
 Request INCR
-Client Disconnected
 Request INCR
 Request INCR
+Client Connected /127.0.0.1:59906
 Client Disconnected
+Client Connected /127.0.0.1:59908
 Request INCR
-Client Connected /127.0.0.1:63732
 Client Disconnected
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63733
+Client Connected /127.0.0.1:59909
 Request INCR
-Client Disconnected
 Request INCR
-Client Connected /127.0.0.1:63734
 Client Disconnected
-Client Connected /127.0.0.1:63735
 Request INCR
-Client Connected /127.0.0.1:63736
+Client Connected /127.0.0.1:59910
 Request INCR
-Client Connected /127.0.0.1:63737
 Client Disconnected
-Request INCR
+Client Connected /127.0.0.1:59907
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63738
 Client Disconnected
 Request INCR
 Client Disconnected
-Client Disconnected
-Client Connected /127.0.0.1:63739
 Request INCR
-Client Disconnected
-Client Connected /127.0.0.1:63730
+Client Connected /127.0.0.1:59911
 Request INCR
+Client Connected /127.0.0.1:59912
+Client Connected /127.0.0.1:59913
+Client Connected /127.0.0.1:59914
 Client Disconnected
-Client Connected /127.0.0.1:63740
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63741
-Client Connected /127.0.0.1:63742
-Request INCR
+Client Connected /127.0.0.1:59915
 Client Disconnected
-Client Connected /127.0.0.1:63743
+Client Connected /127.0.0.1:59916
 Request INCR
-Client Connected /127.0.0.1:63746
+Client Connected /127.0.0.1:59917
 Request INCR
+Client Connected /127.0.0.1:59918
+Client Connected /127.0.0.1:59919
 Client Disconnected
-Client Connected /127.0.0.1:63745
-Client Connected /127.0.0.1:63747
+Client Disconnected
+Client Connected /127.0.0.1:59920
 Request INCR
-Client Connected /127.0.0.1:63744
+Client Connected /127.0.0.1:59922
 Client Disconnected
+Client Connected /127.0.0.1:59921
 Request INCR
+Client Connected /127.0.0.1:59923
 Request INCR
 Client Disconnected
 Request INCR
-Client Disconnected
+Client Connected /127.0.0.1:59925
 Client Disconnected
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63748
+Client Connected /127.0.0.1:59924
 Request INCR
-Client Connected /127.0.0.1:63749
-Client Connected /127.0.0.1:63750
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63751
 Request INCR
 Request INCR
-Client Connected /127.0.0.1:63752
+Client Connected /127.0.0.1:59926
 Client Disconnected
-Client Connected /127.0.0.1:63753
-Request INCR
 Client Disconnected
+Request INCR
 Request INCR
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63754
 Client Disconnected
-Client Connected /127.0.0.1:63755
+Client Connected /127.0.0.1:59927
 Request INCR
-Client Connected /127.0.0.1:63756
 Request INCR
+Client Connected /127.0.0.1:59928
 Request INCR
-Client Connected /127.0.0.1:63757
+Client Connected /127.0.0.1:59929
+Client Connected /127.0.0.1:59930
 Client Disconnected
+Client Connected /127.0.0.1:59932
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63758
 Client Disconnected
-Request INCR
+Client Connected /127.0.0.1:59931
 Client Disconnected
-Client Connected /127.0.0.1:63759
-Request INCR
-Client Connected /127.0.0.1:63760
 Client Disconnected
-Client Connected /127.0.0.1:63761
 Request INCR
 Request INCR
-Client Disconnected
-Client Connected /127.0.0.1:63762
+Client Connected /127.0.0.1:59935
 Request INCR
-Client Disconnected
+Client Connected /127.0.0.1:59934
+Client Connected /127.0.0.1:59933
+Request INCR
+Client Connected /127.0.0.1:59937
 Client Disconnected
-Client Connected /127.0.0.1:63763
 Client Disconnected
+Client Connected /127.0.0.1:59936
 Request INCR
-Client Connected /127.0.0.1:63766
-Client Connected /127.0.0.1:63765
 Request INCR
+Client Connected /127.0.0.1:59938
 Client Disconnected
-Client Connected /127.0.0.1:63764
+Client Disconnected
 Request INCR
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63767
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63768
 Request INCR
+Client Connected /127.0.0.1:59939
 Request INCR
-Client Connected /127.0.0.1:63769
-Client Disconnected
-Client Connected /127.0.0.1:63770
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63771
+Client Connected /127.0.0.1:59940
+Client Disconnected
+Client Connected /127.0.0.1:59941
 Request INCR
+Client Connected /127.0.0.1:59942
 Request INCR
-Client Connected /127.0.0.1:63772
-Client Connected /127.0.0.1:63773
+Client Connected /127.0.0.1:59944
+Client Disconnected
 Request INCR
+Client Connected /127.0.0.1:59943
+Client Connected /127.0.0.1:59945
 Client Disconnected
-Client Connected /127.0.0.1:63774
+Client Connected /127.0.0.1:59946
+Client Connected /127.0.0.1:59949
 Request INCR
-Client Connected /127.0.0.1:63775
+Client Connected /127.0.0.1:59947
+Client Connected /127.0.0.1:59948
 Client Disconnected
-Client Connected /127.0.0.1:63776
+Client Connected /127.0.0.1:59950
 Client Disconnected
-Client Connected /127.0.0.1:63777
-Request INCR
-Client Connected /127.0.0.1:63778
-Client Connected /127.0.0.1:63779
 Client Disconnected
 Request INCR
+Request INCR
+Request INCR
 Client Disconnected
+Client Disconnected
 Request INCR
-Client Connected /127.0.0.1:63780
 Request INCR
-Client Connected /127.0.0.1:63781
+Client Connected /127.0.0.1:59951
+Client Disconnected
+Client Connected /127.0.0.1:59952
 Client Disconnected
+Client Connected /127.0.0.1:59953
 Request INCR
+Request INCR
+Client Connected /127.0.0.1:59954
 Client Disconnected
+Client Connected /127.0.0.1:59955
 Client Disconnected
 Client Disconnected
+Client Connected /127.0.0.1:59956
 Request INCR
-Client Connected /127.0.0.1:63782
 Request INCR
 Request INCR
+Client Connected /127.0.0.1:59957
+Client Disconnected
+Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63783
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63784
+Request INCR
+Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63785
 Client Disconnected
 Request INCR
 Request INCR
 Client Disconnected
-Client Connected /127.0.0.1:63786
 Request INCR
 Request INCR
 Client Disconnected
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63787
 Request INCR
-Client Connected /127.0.0.1:63788
 Client Disconnected
-Client Connected /127.0.0.1:63789
 Request INCR
-Client Connected /127.0.0.1:63790
-Client Disconnected
 Request INCR
 Request INCR
+Client Disconnected
 Client Disconnected
 Client Disconnected
 Client Disconnected
-Client Connected /127.0.0.1:63791
+Client Connected /127.0.0.1:59958
 Request GET
 Client Disconnected
 Mini Redis server stopped
