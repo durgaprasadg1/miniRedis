@@ -326,4 +326,58 @@ public class MiniRedisIntegrationTest {
             serverThread.join();
         }
     }
+
+    @Test
+    void shouldExpireKeyOverTcp() throws Exception {
+
+        MiniRedisServer server = new MiniRedisServer(6380, 4);
+
+        Thread serverThread = new Thread(() -> {
+            try {
+                server.start();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        serverThread.start();
+        server.awaitStartup();
+
+        try (
+                Socket socket = new Socket("localhost", 6380);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream()));
+
+                PrintWriter writer = new PrintWriter(
+                        socket.getOutputStream(),
+                        true)) {
+
+            writer.println("SET name durga");
+            assertEquals("OK", reader.readLine());
+
+            writer.println("EXPIRE name 1");
+            assertEquals("1", reader.readLine());
+
+            Thread.sleep(1200);
+
+            writer.println("GET name");
+
+            assertEquals(
+                    "(nil)",
+                    reader.readLine());
+
+            writer.println("EXISTS name");
+
+            assertEquals(
+                    "0",
+                    reader.readLine());
+
+        } finally {
+
+            server.stop();
+            serverThread.join();
+        }
+    }
 }
