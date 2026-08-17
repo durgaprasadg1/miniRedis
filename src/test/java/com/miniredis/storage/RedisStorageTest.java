@@ -237,4 +237,29 @@ public class RedisStorageTest {
 
         storage.shutDown();
     }
+
+    @Test
+    void shouldPushLeft() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            assertEquals(
+                    1,
+                    storage.pushLeft("queue", "A"));
+
+            assertEquals(
+                    2,
+                    storage.pushLeft("queue", "B"));
+
+            assertEquals(
+                    3,
+                    storage.pushLeft("queue", "C"));
+
+        } finally {
+
+            storage.shutDown();
+        }
+    }
 }
