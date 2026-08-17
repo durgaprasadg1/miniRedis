@@ -3,6 +3,7 @@ package com.miniredis.storage;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 // import Entry
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -166,8 +167,55 @@ public class RedisStorage {
         return list.size();
     }
 
+    public synchronized int pushRight(String key, String value) {
+
+        Entry entry = getLiveEntry(key);
+
+        Deque<String> list;
+
+        if (entry == null) {
+
+            list = new ArrayDeque<>();
+
+            entry = new Entry(
+                    DataType.LIST,
+                    list);
+
+            data.put(key, entry);
+
+        } else {
+
+            if (entry.getType() != DataType.LIST) {
+                throw new IllegalStateException("WrongType");
+            }
+
+            list = (Deque<String>) entry.getValue();
+        }
+
+        list.addLast(value);
+
+        return list.size();
+    }
+
     public void shutDown() {
+
         expirationExecutor.shutdownNow();
+    }
+
+    List<String> getList(String key) {
+
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return null;
+        }
+
+        if (entry.getType() != DataType.LIST) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        return new ArrayList<>(
+                (Deque<String>) entry.getValue());
     }
 
     int rawSize() {

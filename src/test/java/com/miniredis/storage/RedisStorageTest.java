@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 public class RedisStorageTest {
 
     @Test
@@ -259,6 +261,88 @@ public class RedisStorageTest {
 
         } finally {
 
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldPushLeftInCorrectOrder() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "A");
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "C");
+
+            assertEquals(
+                    List.of("C", "B", "A"),
+                    storage.getList("queue"));
+
+        } finally {
+
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldRejectPushLeftOnString() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.set("name", "durga");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> storage.pushLeft(
+                            "name",
+                            "hello"));
+
+        } finally {
+
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldPushRight() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushRight("queue", "A");
+            storage.pushRight("queue", "B");
+            storage.pushRight("queue", "C");
+
+            assertEquals(
+                    List.of("A", "B", "C"),
+                    storage.getList("queue"));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldPushLeftAndRight() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "A");
+            storage.pushRight("queue", "C");
+
+            assertEquals(
+                    List.of("A", "B", "C"),
+                    storage.getList("queue"));
+
+        } finally {
             storage.shutDown();
         }
     }
