@@ -218,4 +218,23 @@ public class RedisStorageTest {
                 0,
                 storage.exists("name"));
     }
+
+    @Test
+    void activeExpirationShouldRemoveExpiredEntries()
+            throws InterruptedException {
+
+        RedisStorage storage = new RedisStorage();
+
+        storage.set("name", "durga");
+
+        storage.expire("name", 1);
+
+        assertEquals(1, storage.rawSize());
+
+        Thread.sleep(2500);
+
+        assertEquals(0, storage.rawSize());
+
+        storage.shutDown();
+    }
 }

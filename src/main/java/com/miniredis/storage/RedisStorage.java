@@ -3,13 +3,23 @@ package com.miniredis.storage;
 // import Entry
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class RedisStorage {
 
     private final Map<String, Entry> data;
 
+    private final ScheduledExecutorService expirationExecutor;
+
     public RedisStorage() {
         data = new ConcurrentHashMap<>();
+        expirationExecutor = Executors.newSingleThreadScheduledExecutor();
+        expirationExecutor.scheduleAtFixedRate(this::removeExpiredEntries, 1, 1, TimeUnit.SECONDS); // Hrr ek second me
+                                                                                                    // chalega like run
+                                                                                                    // -> wait for a sec
+                                                                                                    // -> run
     }
 
     public void set(String key, String value) {
@@ -119,4 +129,25 @@ public class RedisStorage {
         return 1;
     }
 
+    private void removeExpiredEntries() {
+        long now = System.currentTimeMillis();
+        for (Map.Entry<String, Entry> entry : data.entrySet()) {
+            Entry value = entry.getValue();
+
+            long expireAt = value.getExpiresAt();
+            if (expireAt != -1 && now >= expireAt) {
+                data.remove(entry.getKey(), value); // yaha dono diye hai, iska mtlb exact mapping match honi chahiye
+                                                    // naa ki sirf key.
+            }
+
+        }
+    }
+
+    public void shutDown() {
+        expirationExecutor.shutdownNow();
+    }
+
+    int rawSize() {
+        return data.size();
+    }
 }

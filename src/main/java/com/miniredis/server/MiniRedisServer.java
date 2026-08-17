@@ -88,6 +88,7 @@ public class MiniRedisServer {
         }
 
         executor.shutdownNow();
+        store.shutDown();
 
         System.out.println(
                 "Mini Redis server stopped");
