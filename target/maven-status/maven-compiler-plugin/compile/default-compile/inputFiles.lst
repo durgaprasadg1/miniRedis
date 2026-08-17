@@ -10,8 +10,10 @@ C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\co
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\GetHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\IncrementByHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\IncrementHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\LpushHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PersistHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PingHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\RpushHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\SetHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\SizeHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\TtlHandler.java

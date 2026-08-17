@@ -339,4 +339,51 @@ public class CommandDispatcherTest {
                                                                 List.of("name"))));
         }
 
+        @Test
+        void shouldExecuteLpush() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LPUSH",
+                                                List.of("queue", "A")));
+
+                assertEquals("1", response);
+        }
+
+        @Test
+        void shouldExecuteRpush() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "RPUSH",
+                                                List.of("queue", "A")));
+
+                assertEquals("1", response);
+        }
+
+        @Test
+        void shouldRejectLpushOnString() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LPUSH",
+                                                List.of("name", "hello")));
+
+                assertEquals("WRONGTYPE", response);
+        }
+
 }
