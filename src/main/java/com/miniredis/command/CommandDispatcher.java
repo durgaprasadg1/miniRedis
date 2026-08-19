@@ -17,6 +17,8 @@ import com.miniredis.command.handler.TtlHandler;
 import com.miniredis.command.handler.PersistHandler;
 import com.miniredis.command.handler.LpushHandler;
 import com.miniredis.command.handler.RpushHandler;
+import com.miniredis.command.handler.LpopHandler;
+import com.miniredis.command.handler.RpopHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +45,9 @@ public class CommandDispatcher {
         handlers.put("LPUSH", new LpushHandler(store));
         handlers.put("RPUSH", new RpushHandler(store));
         handlers.put("LLEN", new LlenHandler(store));
+        handlers.put("LPOP", new LpopHandler(store));
+        handlers.put("RPOP", new RpopHandler(store));
+
     }
 
     public String execute(Command command) {
