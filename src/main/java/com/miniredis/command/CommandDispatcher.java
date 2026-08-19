@@ -6,6 +6,7 @@ import com.miniredis.command.handler.DeleteHandler;
 import com.miniredis.command.handler.ExistsHandler;
 import com.miniredis.command.handler.GetHandler;
 import com.miniredis.command.handler.IncrementHandler;
+import com.miniredis.command.handler.LlenHandler;
 import com.miniredis.command.handler.PingHandler;
 import com.miniredis.command.handler.SetHandler;
 import com.miniredis.command.handler.DecrementHandler;
@@ -41,6 +42,7 @@ public class CommandDispatcher {
         handlers.put("PERSIST", new PersistHandler(store));
         handlers.put("LPUSH", new LpushHandler(store));
         handlers.put("RPUSH", new RpushHandler(store));
+        handlers.put("LLEN", new LlenHandler(store));
     }
 
     public String execute(Command command) {

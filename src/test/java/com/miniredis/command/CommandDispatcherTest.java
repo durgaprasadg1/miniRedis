@@ -386,4 +386,60 @@ public class CommandDispatcherTest {
                 assertEquals("WRONGTYPE", response);
         }
 
+        @Test
+        void shouldExecuteLlen() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "LPUSH",
+                                                List.of("queue", "A")));
+
+                dispatcher.execute(
+                                new Command(
+                                                "RPUSH",
+                                                List.of("queue", "B")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LLEN",
+                                                List.of("queue")));
+
+                assertEquals("2", response);
+        }
+
+        @Test
+        void shouldReturnZeroForMissingList() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LLEN",
+                                                List.of("missing")));
+
+                assertEquals("0", response);
+        }
+
+        @Test
+        void shouldRejectLlenOnString() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LLEN",
+                                                List.of("name")));
+
+                assertEquals("WRONGTYPE", response);
+        }
 }

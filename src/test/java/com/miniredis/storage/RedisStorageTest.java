@@ -346,4 +346,92 @@ public class RedisStorageTest {
             storage.shutDown();
         }
     }
+
+    @Test
+    void shouldPopLeft() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "A");
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "C");
+
+            assertEquals(
+                    "C",
+                    storage.popLeft("queue"));
+
+            assertEquals(
+                    2,
+                    storage.listLength("queue"));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldPopRight() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "A");
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "C");
+
+            assertEquals(
+                    "A",
+                    storage.popRight("queue"));
+
+            assertEquals(
+                    2,
+                    storage.listLength("queue"));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldReturnNullWhenPoppingMissingList() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            assertNull(
+                    storage.popLeft("missing"));
+
+            assertNull(
+                    storage.popRight("missing"));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldRejectPopOnString() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.set("name", "durga");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> storage.popLeft("name"));
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> storage.popRight("name"));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
 }
