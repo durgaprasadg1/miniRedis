@@ -434,4 +434,85 @@ public class RedisStorageTest {
             storage.shutDown();
         }
     }
+
+    @Test
+    void shouldReturnFullList() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "A");
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "C");
+
+            assertEquals(
+                    List.of("C", "B", "A"),
+                    storage.listRange("queue", 0, -1));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldReturnPartialRange() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushLeft("queue", "A");
+            storage.pushLeft("queue", "B");
+            storage.pushLeft("queue", "C");
+
+            assertEquals(
+                    List.of("C", "B"),
+                    storage.listRange("queue", 0, 1));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldHandleNegativeIndexes() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.pushRight("queue", "A");
+            storage.pushRight("queue", "B");
+            storage.pushRight("queue", "C");
+
+            assertEquals(
+                    List.of("B", "C"),
+                    storage.listRange("queue", -2, -1));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
+
+    @Test
+    void shouldRejectRangeOnString() {
+
+        RedisStorage storage = new RedisStorage();
+
+        try {
+
+            storage.set("name", "durga");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> storage.listRange(
+                            "name",
+                            0,
+                            -1));
+
+        } finally {
+            storage.shutDown();
+        }
+    }
 }

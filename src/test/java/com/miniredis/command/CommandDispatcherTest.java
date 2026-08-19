@@ -439,7 +439,6 @@ public class CommandDispatcherTest {
                                 new Command(
                                                 "LLEN",
                                                 List.of("name")));
-
                 assertEquals("WRONGTYPE", response);
         }
 
@@ -450,8 +449,7 @@ public class CommandDispatcherTest {
                 CommandDispatcher dispatcher = new CommandDispatcher(storage);
 
                 dispatcher.execute(
-                                new Command(
-                                                "LPUSH",
+                                new Command("LPUSH",
                                                 List.of("queue", "A")));
 
                 dispatcher.execute(

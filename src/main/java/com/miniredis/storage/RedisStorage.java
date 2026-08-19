@@ -257,11 +257,38 @@ public class RedisStorage {
         }
 
         if (entry.getType() != DataType.LIST) {
-            throw new IllegalStateException("WrongType");
+            throw new IllegalStateException("WRONGTYPE");
         }
 
         Deque<String> list = (Deque<String>) entry.getValue();
 
         return list.pollLast();
+    }
+
+    public List<String> listRange(String key, int start, int stop) {
+        Entry entry = getLiveEntry(key);
+        if (entry == null) {
+            return List.of();
+        }
+        if (entry.getType() != DataType.LIST) {
+            throw new IllegalStateException("WRONGTYPE");
+        }
+        Deque<String> list = (Deque<String>) entry.getValue();
+        List<String> values = new ArrayList<>(list);
+        int size = values.size();
+
+        if (start < 0) {
+            start = size + start;
+        }
+
+        if (stop < 0) {
+            stop = size + stop;
+        }
+        start = Math.max(start, 0);
+        stop = Math.min(stop, size - 1);
+        if (start > stop || start >= size) {
+            return List.of();
+        }
+        return new ArrayList<>(values.subList(start, stop + 1));
     }
 }
