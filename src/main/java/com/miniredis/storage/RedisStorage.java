@@ -219,6 +219,19 @@ public class RedisStorage {
     }
 
     int rawSize() {
+
         return data.size();
     }
+
+    public int listLength(String key) {
+        Entry entry = getLiveEntry(key);
+        if (entry == null)
+            return 0;
+        if (entry.getType() != DataType.LIST) {
+            throw new IllegalStateException("WrongType");
+        }
+        Deque<String> list = (Deque<String>) entry.getValue();
+        return list.size();
+    }
+
 }
