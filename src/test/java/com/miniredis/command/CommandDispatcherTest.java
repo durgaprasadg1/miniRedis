@@ -442,4 +442,92 @@ public class CommandDispatcherTest {
 
                 assertEquals("WRONGTYPE", response);
         }
+
+        @Test
+        void shouldExecuteLpop() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "LPUSH",
+                                                List.of("queue", "A")));
+
+                dispatcher.execute(
+                                new Command(
+                                                "LPUSH",
+                                                List.of("queue", "B")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "LPOP",
+                                                List.of("queue")));
+
+                assertEquals("B", response);
+        }
+
+        @Test
+        void shouldExecuteRpop() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "RPUSH",
+                                                List.of("queue", "A")));
+
+                dispatcher.execute(
+                                new Command(
+                                                "RPUSH",
+                                                List.of("queue", "B")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "RPOP",
+                                                List.of("queue")));
+
+                assertEquals("B", response);
+        }
+
+        @Test
+        void shouldReturnNilForMissingList() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                assertEquals(
+                                "(nil)",
+                                dispatcher.execute(
+                                                new Command(
+                                                                "LPOP",
+                                                                List.of("missing"))));
+
+                assertEquals(
+                                "(nil)",
+                                dispatcher.execute(
+                                                new Command(
+                                                                "RPOP",
+                                                                List.of("missing"))));
+        }
+
+        @Test
+        void shouldRejectPopOnString() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                assertEquals(
+                                "WRONGTYPE",
+                                dispatcher.execute(
+                                                new Command(
+                                                                "LPOP",
+                                                                List.of("name"))));
+        }
 }
