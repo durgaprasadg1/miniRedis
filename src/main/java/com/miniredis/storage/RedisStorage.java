@@ -234,4 +234,17 @@ public class RedisStorage {
         return list.size();
     }
 
+    public synchronized String popLeft(String key) {
+        Entry entry = getLiveEntry(key);
+        if (entry == null) {
+
+            return null;
+        }
+        if (entry.getType() != DataType.LIST) {
+            throw new IllegalStateException("WrongType");
+        }
+        Deque<String> list = (Deque<String>) entry.getValue();
+
+        return list.pollFirst();
+    }
 }
