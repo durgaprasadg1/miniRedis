@@ -13,6 +13,7 @@ C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\co
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\LlenHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\LpopHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\LpushHandler.java
+C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\LrangeHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PersistHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\PingHandler.java
 C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\src\main\java\com\miniredis\command\handler\RpopHandler.java

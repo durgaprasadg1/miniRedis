@@ -16,6 +16,7 @@ import com.miniredis.command.handler.ExpireHandler;
 import com.miniredis.command.handler.TtlHandler;
 import com.miniredis.command.handler.PersistHandler;
 import com.miniredis.command.handler.LpushHandler;
+import com.miniredis.command.handler.LrangeHandler;
 import com.miniredis.command.handler.RpushHandler;
 import com.miniredis.command.handler.LpopHandler;
 import com.miniredis.command.handler.RpopHandler;
@@ -47,6 +48,7 @@ public class CommandDispatcher {
         handlers.put("LLEN", new LlenHandler(store));
         handlers.put("LPOP", new LpopHandler(store));
         handlers.put("RPOP", new RpopHandler(store));
+        handlers.put("LRANGE", new LrangeHandler(store));
 
     }
 
