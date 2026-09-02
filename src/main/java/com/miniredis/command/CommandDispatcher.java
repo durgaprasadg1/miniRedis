@@ -10,6 +10,7 @@ import com.miniredis.command.handler.IncrementHandler;
 import com.miniredis.command.handler.LlenHandler;
 import com.miniredis.command.handler.PingHandler;
 import com.miniredis.command.handler.SetHandler;
+import com.miniredis.command.handler.SismemberHandler;
 import com.miniredis.command.handler.DecrementHandler;
 import com.miniredis.command.handler.IncrementByHandler;
 import com.miniredis.command.handler.DecrementByHandler;
@@ -53,6 +54,7 @@ public class CommandDispatcher {
         handlers.put("LRANGE", new LrangeHandler(store));
         handlers.put("SADD", new SaddHandler(store));
         handlers.put("SREM", new SremHandler(store));
+        handlers.put("SISMEMBER", new SismemberHandler(store));
 
     }
 

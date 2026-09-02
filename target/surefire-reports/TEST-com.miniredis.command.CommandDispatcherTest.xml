@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.command.CommandDispatcherTest" time="0.19" tests="31" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.command.CommandDispatcherTest" time="0.185" tests="31" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire5852032101951884929\surefirebooter-20260903003135043_3.jar C:\Users\PC\AppData\Local\Temp\surefire5852032101951884929 2026-09-03T00-31-34_896-jvmRun1 surefire-20260903003135043_1tmp surefire_0-20260903003135043_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire3620443646279993956\surefirebooter-20260903003928580_3.jar C:\Users\PC\AppData\Local\Temp\surefire3620443646279993956 2026-09-03T00-39-28_376-jvmRun1 surefire-20260903003928580_1tmp surefire_0-20260903003928580_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire5852032101951884929\surefirebooter-20260903003135043_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire3620443646279993956\surefirebooter-20260903003928580_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -59,35 +59,35 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="shouldRejectUnknownCommand" classname="com.miniredis.command.CommandDispatcherTest" time="0.062"/>
-  <testcase name="shouldRejectLpushOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldRejectUnknownCommand" classname="com.miniredis.command.CommandDispatcherTest" time="0.065"/>
+  <testcase name="shouldRejectLpushOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
   <testcase name="shouldExecuteDbSize" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteDecrBy" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteDelete" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteExists" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldExecuteExpire" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldExecuteIncrBy" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteGet" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldExecuteDecrBy" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldExecuteDelete" classname="com.miniredis.command.CommandDispatcherTest" time="0.004"/>
+  <testcase name="shouldExecuteExists" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldExecuteExpire" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldExecuteIncrBy" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldExecuteGet" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
   <testcase name="shouldExecuteSet" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteTtl" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldExecuteTtl" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
   <testcase name="shouldExecuteDecr" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteLlen" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteLpop" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecutePing" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteRpop" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldExecuteSadd" classname="com.miniredis.command.CommandDispatcherTest" time="0.0"/>
+  <testcase name="shouldExecuteLlen" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldExecuteLpop" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldExecutePing" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldExecuteRpop" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldExecuteSadd" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
   <testcase name="shouldRejectNonIntegerValue" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldReturnZeroForMissingList" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldReturnZeroForMissingList" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
   <testcase name="sremCommand" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldReturnNilForMissingList" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldRejectLlenOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
-  <testcase name="shouldExecuteLpush" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldExecuteRpush" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldRejectSaddOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldReturnZeroForDuplicateSadd" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
+  <testcase name="shouldReturnNilForMissingList" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldRejectLlenOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldExecuteLpush" classname="com.miniredis.command.CommandDispatcherTest" time="0.0"/>
+  <testcase name="shouldExecuteRpush" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldRejectSaddOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldReturnZeroForDuplicateSadd" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
   <testcase name="shouldExecuteIncrement" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
-  <testcase name="shouldReturnZeroWhenDeletingMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.0"/>
-  <testcase name="shouldExecutePersist" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldReturnZeroForMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.002"/>
-  <testcase name="shouldRejectPopOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.003"/>
+  <testcase name="shouldReturnZeroWhenDeletingMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
+  <testcase name="shouldExecutePersist" classname="com.miniredis.command.CommandDispatcherTest" time="0.0"/>
+  <testcase name="shouldReturnZeroForMissingKey" classname="com.miniredis.command.CommandDispatcherTest" time="0.0"/>
+  <testcase name="shouldRejectPopOnString" classname="com.miniredis.command.CommandDispatcherTest" time="0.001"/>
 </testsuite>

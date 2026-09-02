@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 // import Entry
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.Executors;
@@ -329,4 +330,53 @@ public class RedisStorage {
 
         return set.remove(value) ? 1 : 0;
     }
+
+    public synchronized int isSetMember(String key, String value) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return 0;
+        }
+
+        if (entry.getType() != DataType.SET) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        HashSet<String> set = (HashSet<String>) entry.getValue();
+
+        return set.contains(value) ? 1 : 0;
+    }
+
+    public synchronized int setCardinality(String key) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return 0;
+        }
+
+        if (entry.getType() != DataType.SET) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        HashSet<String> set = (HashSet<String>) entry.getValue();
+
+        return set.size();
+    }
+
+    public synchronized Set<String> getSetMembers(String key) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return Set.of();
+        }
+
+        if (entry.getType() != DataType.SET) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        HashSet<String> set = (HashSet<String>) entry.getValue();
+
+        return new HashSet<>(set);
+    }
+
 }

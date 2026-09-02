@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Set;
 
 public class RedisStorageTest {
 
@@ -531,4 +532,47 @@ public class RedisStorageTest {
             throw e;
         }
     }
-}
+
+    @Test
+    void getSetMembersReturnsAllMembers() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.addToSet("users", "ram");
+            store.addToSet("users", "shyam");
+
+            Set<String> members = store.getSetMembers("users");
+
+            assertEquals(Set.of("ram", "shyam"), members);
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getSetMembersThrowsWrongTypeForString() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.getSetMembers("name"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getSetMembersReturnsEmptySetForMissingKey() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertEquals(Set.of(), store.getSetMembers("users"));
+        } finally {
+            store.shutDown();
+        }
+    }
