@@ -606,4 +606,54 @@ public class RedisStorageTest {
             store.shutDown();
         }
     }
+
+    @Test
+    void getHashFieldReturnsValue() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.setHashField("user", "name", "ram");
+
+            assertEquals(
+                    "ram",
+                    store.getHashField("user", "name"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getHashFieldReturnsNullWhenMissing() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertNull(
+                    store.getHashField("user", "name"));
+
+            store.setHashField("user", "age", "20");
+
+            assertNull(
+                    store.getHashField("user", "name"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getHashFieldThrowsWrongType() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.getHashField("name", "first"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
 }

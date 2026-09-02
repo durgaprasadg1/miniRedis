@@ -404,4 +404,20 @@ public class RedisStorage {
 
         return exists ? 0 : 1;
     }
+
+    public synchronized String getHashField(String key, String field) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return null;
+        }
+
+        if (entry.getType() != DataType.HASH) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        Map<String, String> hash = (Map<String, String>) entry.getValue();
+
+        return hash.get(field);
+    }
 }
