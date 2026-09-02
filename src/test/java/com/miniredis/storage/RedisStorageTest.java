@@ -576,3 +576,4 @@ public class RedisStorageTest {
             store.shutDown();
         }
     }
+}

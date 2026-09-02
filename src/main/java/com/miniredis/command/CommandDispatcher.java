@@ -2,6 +2,7 @@ package com.miniredis.command;
 
 import com.miniredis.storage.RedisStorage;
 import com.miniredis.command.handler.SizeHandler;
+import com.miniredis.command.handler.SmembersHandler;
 import com.miniredis.command.handler.SremHandler;
 import com.miniredis.command.handler.DeleteHandler;
 import com.miniredis.command.handler.ExistsHandler;
@@ -55,6 +56,7 @@ public class CommandDispatcher {
         handlers.put("SADD", new SaddHandler(store));
         handlers.put("SREM", new SremHandler(store));
         handlers.put("SISMEMBER", new SismemberHandler(store));
+        handlers.put("SMEMBERS", new SmembersHandler(store));
 
     }
 

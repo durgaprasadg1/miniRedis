@@ -4,7 +4,10 @@ import com.miniredis.storage.RedisStorage;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -599,6 +602,85 @@ public class CommandDispatcherTest {
                                         "0",
                                         dispatcher.execute(
                                                         new Command("SREM", List.of("users", "ram"))));
+                } finally {
+                        store.shutDown();
+                }
+        }
+
+        @Test
+        void smembersReturnsMembers() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        dispatcher.execute(
+                                        new Command("SADD", List.of("users", "ram")));
+
+                        dispatcher.execute(
+                                        new Command("SADD", List.of("users", "shyam")));
+
+                        String result = dispatcher.execute(
+                                        new Command("SMEMBERS", List.of("users")));
+
+                        Set<String> actual = new HashSet<>(Arrays.asList(result.split(" ")));
+
+                        assertEquals(Set.of("ram", "shyam"), actual);
+
+                } finally {
+                        store.shutDown();
+                }
+        }
+
+        @Test
+        void smembersMissingKeyReturnsEmptySet() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        assertEquals(
+                                        "(empty set)",
+                                        dispatcher.execute(
+                                                        new Command("SMEMBERS", List.of("users"))));
+
+                } finally {
+                        store.shutDown();
+                }
+        }
+
+        @Test
+        void smembersWrongTypeReturnsWrongType() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        dispatcher.execute(
+                                        new Command("SET", List.of("name", "ram")));
+
+                        assertEquals(
+                                        "WRONGTYPE",
+                                        dispatcher.execute(
+                                                        new Command("SMEMBERS", List.of("name"))));
+
+                } finally {
+                        store.shutDown();
+                }
+        }
+
+        @Test
+        void smembersWrongNumberOfArguments() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        assertEquals(
+                                        "ERR wrong number of arguments",
+                                        dispatcher.execute(
+                                                        new Command("SMEMBERS", List.of())));
+
                 } finally {
                         store.shutDown();
                 }
