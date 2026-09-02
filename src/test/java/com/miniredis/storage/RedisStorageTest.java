@@ -656,4 +656,48 @@ public class RedisStorageTest {
             store.shutDown();
         }
     }
+
+    @Test
+    void deleteHashFieldRemovesExistingField() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.setHashField("user", "name", "ram");
+
+            assertEquals(1, store.deleteHashField("user", "name"));
+            assertNull(store.getHashField("user", "name"));
+
+            assertEquals(0, store.deleteHashField("user", "name"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void deleteHashFieldReturnsZeroForMissingKey() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertEquals(0, store.deleteHashField("user", "name"));
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void deleteHashFieldThrowsWrongType() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.deleteHashField("name", "field"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
 }

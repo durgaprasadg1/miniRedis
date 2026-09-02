@@ -420,4 +420,20 @@ public class RedisStorage {
 
         return hash.get(field);
     }
+
+    public synchronized int deleteHashField(String key, String field) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return 0;
+        }
+
+        if (entry.getType() != DataType.HASH) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        Map<String, String> hash = (Map<String, String>) entry.getValue();
+
+        return hash.remove(field) != null ? 1 : 0;
+    }
 }

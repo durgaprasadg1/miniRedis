@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.miniredis.storage.RedisStorageTest
 -------------------------------------------------------------------------------
-Tests run: 39, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.762 s -- in com.miniredis.storage.RedisStorageTest
+Tests run: 45, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.833 s -- in com.miniredis.storage.RedisStorageTest
