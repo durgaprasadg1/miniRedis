@@ -515,4 +515,20 @@ public class RedisStorageTest {
             storage.shutDown();
         }
     }
+
+    @Test
+    void removeExistingSetMember() {
+        try {
+            RedisStorage store = new RedisStorage();
+
+            store.addToSet("users", "ram");
+
+            assertEquals(1, store.removeFromSet("users", "ram"));
+            assertEquals(0, store.removeFromSet("users", "ram"));
+
+            store.shutDown();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

@@ -580,4 +580,27 @@ public class CommandDispatcherTest {
 
                 assertEquals("WRONGTYPE", response);
         }
+
+        @Test
+        void sremCommand() {
+                RedisStorage store = new RedisStorage();
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        dispatcher.execute(
+                                        new Command("SADD", List.of("users", "ram")));
+
+                        assertEquals(
+                                        "1",
+                                        dispatcher.execute(
+                                                        new Command("SREM", List.of("users", "ram"))));
+
+                        assertEquals(
+                                        "0",
+                                        dispatcher.execute(
+                                                        new Command("SREM", List.of("users", "ram"))));
+                } finally {
+                        store.shutDown();
+                }
+        }
 }
