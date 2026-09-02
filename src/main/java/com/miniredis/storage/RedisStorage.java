@@ -468,4 +468,20 @@ public class RedisStorage {
 
         return hash.size();
     }
+
+    public synchronized Map<String, String> getAllHashFields(String key) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return Map.of();
+        }
+
+        if (entry.getType() != DataType.HASH) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        Map<String, String> hash = (Map<String, String>) entry.getValue();
+
+        return new HashMap<>(hash);
+    }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class RedisStorageTest {
@@ -785,6 +786,55 @@ public class RedisStorageTest {
             assertThrows(
                     IllegalStateException.class,
                     () -> store.hashLength("name"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getAllHashFieldsReturnsAllFields() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.setHashField("user", "name", "ram");
+            store.setHashField("user", "age", "20");
+
+            assertEquals(
+                    Map.of(
+                            "name", "ram",
+                            "age", "20"),
+                    store.getAllHashFields("user"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getAllHashFieldsReturnsEmptyMapForMissingKey() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertEquals(
+                    Map.of(),
+                    store.getAllHashFields("user"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void getAllHashFieldsThrowsWrongType() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.getAllHashFields("name"));
 
         } finally {
             store.shutDown();
