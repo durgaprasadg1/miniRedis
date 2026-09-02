@@ -713,7 +713,7 @@ public class RedisStorageTest {
                     store.hashFieldExists("user", "name"));
 
         } finally {
-            store.shutdown();
+            store.shutDown();
         }
     }
 
@@ -733,7 +733,7 @@ public class RedisStorageTest {
                     store.hashFieldExists("user", "name"));
 
         } finally {
-            store.shutdown();
+            store.shutDown();
         }
     }
 
@@ -749,7 +749,45 @@ public class RedisStorageTest {
                     () -> store.hashFieldExists("name", "field"));
 
         } finally {
-            store.shutdown();
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void hashLengthReturnsNumberOfFields() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertEquals(0, store.hashLength("user"));
+
+            store.setHashField("user", "name", "ram");
+            store.setHashField("user", "age", "20");
+
+            assertEquals(2, store.hashLength("user"));
+
+            // Updating an existing field should not increase size
+            store.setHashField("user", "name", "shyam");
+
+            assertEquals(2, store.hashLength("user"));
+
+        } finally {
+            store.shutDown();
+        }
+    }
+
+    @Test
+    void hashLengthThrowsWrongType() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.hashLength("name"));
+
+        } finally {
+            store.shutDown();
         }
     }
 }
