@@ -3,6 +3,7 @@ package com.miniredis.storage;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 // import Entry
@@ -379,4 +380,28 @@ public class RedisStorage {
         return new HashSet<>(set);
     }
 
+    public synchronized int setHashField(String key, String field, String value) {
+        Entry entry = getLiveEntry(key);
+
+        Map<String, String> hash;
+
+        if (entry == null) {
+            hash = new HashMap<>();
+
+            entry = new Entry(DataType.HASH, hash);
+            data.put(key, entry);
+        } else {
+            if (entry.getType() != DataType.HASH) {
+                throw new IllegalStateException("WrongType");
+            }
+
+            hash = (Map<String, String>) entry.getValue();
+        }
+
+        boolean exists = hash.containsKey(field);
+
+        hash.put(field, value);
+
+        return exists ? 0 : 1;
+    }
 }

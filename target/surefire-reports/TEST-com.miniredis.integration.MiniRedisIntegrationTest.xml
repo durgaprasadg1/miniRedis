@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.MiniRedisIntegrationTest" time="1.526" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.integration.MiniRedisIntegrationTest" time="1.543" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire17559080170517769284\surefirebooter-20260903004341886_3.jar C:\Users\PC\AppData\Local\Temp\surefire17559080170517769284 2026-09-03T00-43-41_725-jvmRun1 surefire-20260903004341886_1tmp surefire_0-20260903004341886_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire16989971120170074512\surefirebooter-20260903004849559_3.jar C:\Users\PC\AppData\Local\Temp\surefire16989971120170074512 2026-09-03T00-48-49_322-jvmRun1 surefire-20260903004849559_1tmp surefire_0-20260903004849559_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire17559080170517769284\surefirebooter-20260903004341886_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire16989971120170074512\surefirebooter-20260903004849559_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -59,44 +59,44 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="shouldExecuteSetAndGet" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.055">
+  <testcase name="shouldExecuteSetAndGet" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.056">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52448
+Client Connected /127.0.0.1:52436
 Request SET
 Request GET
-Client Disconnected
 Mini Redis server stopped
+Client Disconnected
 ]]></system-out>
   </testcase>
   <testcase name="shouldHandleFragmentedCommand" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.007">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52449
+Client Connected /127.0.0.1:52437
 Request SET
 Request GET
 Mini Redis server stopped
 Client Disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="shouldRespondToPing" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.208">
+  <testcase name="shouldRespondToPing" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.207">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52450
+Client Connected /127.0.0.1:52438
 Request PING
 Mini Redis server stopped
 Client Disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="shouldHandleMultipleCommandsInSingleWrite" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.007">
+  <testcase name="shouldHandleMultipleCommandsInSingleWrite" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.009">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52451
+Client Connected /127.0.0.1:52439
 Request PING
 Request GET
 Mini Redis server stopped
 Client Disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="shouldHandleMultipleCommandsOverSameConnection" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.011">
+  <testcase name="shouldHandleMultipleCommandsOverSameConnection" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.015">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52452
+Client Connected /127.0.0.1:52440
 Request SET
 Request GET
 Request EXISTS
@@ -107,25 +107,25 @@ Mini Redis server stopped
 Client Disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="shouldHandleTtlOverTcp" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.008">
+  <testcase name="shouldHandleTtlOverTcp" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="0.015">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52453
+Client Connected /127.0.0.1:52441
 Request SET
 Request EXPIRE
 Request TTL
-Mini Redis server stopped
 Client Disconnected
+Mini Redis server stopped
 ]]></system-out>
   </testcase>
-  <testcase name="shouldExpireKeyOverTcp" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="1.218">
+  <testcase name="shouldExpireKeyOverTcp" classname="com.miniredis.integration.MiniRedisIntegrationTest" time="1.219">
     <system-out><![CDATA[Mini Redis server started on : 6380
-Client Connected /127.0.0.1:52454
+Client Connected /127.0.0.1:52442
 Request SET
 Request EXPIRE
 Request GET
 Request EXISTS
-Client Disconnected
 Mini Redis server stopped
+Client Disconnected
 ]]></system-out>
   </testcase>
 </testsuite>
