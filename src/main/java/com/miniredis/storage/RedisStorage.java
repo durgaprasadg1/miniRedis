@@ -3,6 +3,7 @@ package com.miniredis.storage;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.List;
 // import Entry
 import java.util.Map;
@@ -290,5 +291,42 @@ public class RedisStorage {
             return List.of();
         }
         return new ArrayList<>(values.subList(start, stop + 1));
+    }
+
+    public synchronized int addToSet(String key, String value) {
+        Entry entry = getLiveEntry(key);
+        HashSet<String> set;
+
+        if (entry == null) {
+            set = new HashSet<>();
+
+            entry = new Entry(DataType.SET, set);
+
+            data.put(key, entry); // FIX
+        } else {
+            if (entry.getType() != DataType.SET) {
+                throw new IllegalStateException("WrongType");
+            }
+
+            set = (HashSet<String>) entry.getValue();
+        }
+
+        return set.add(value) ? 1 : 0;
+    }
+
+    public synchronized int removeFromSet(String key, String value) {
+        Entry entry = getLiveEntry(key);
+
+        if (entry == null) {
+            return 0;
+        }
+
+        if (entry.getType() != DataType.SET) {
+            throw new IllegalStateException("WrongType");
+        }
+
+        HashSet<String> set = (HashSet<String>) entry.getValue();
+
+        return set.remove(value) ? 1 : 0;
     }
 }

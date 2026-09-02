@@ -528,4 +528,56 @@ public class CommandDispatcherTest {
                                                                 "LPOP",
                                                                 List.of("name"))));
         }
+
+        @Test
+        void shouldExecuteSadd() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "SADD",
+                                                List.of("colors", "red")));
+
+                assertEquals("1", response);
+        }
+
+        @Test
+        void shouldReturnZeroForDuplicateSadd() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SADD",
+                                                List.of("colors", "red")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "SADD",
+                                                List.of("colors", "red")));
+
+                assertEquals("0", response);
+        }
+
+        @Test
+        void shouldRejectSaddOnString() {
+
+                RedisStorage storage = new RedisStorage();
+                CommandDispatcher dispatcher = new CommandDispatcher(storage);
+
+                dispatcher.execute(
+                                new Command(
+                                                "SET",
+                                                List.of("name", "durga")));
+
+                String response = dispatcher.execute(
+                                new Command(
+                                                "SADD",
+                                                List.of("name", "hello")));
+
+                assertEquals("WRONGTYPE", response);
+        }
 }

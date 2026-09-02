@@ -20,6 +20,7 @@ import com.miniredis.command.handler.LrangeHandler;
 import com.miniredis.command.handler.RpushHandler;
 import com.miniredis.command.handler.LpopHandler;
 import com.miniredis.command.handler.RpopHandler;
+import com.miniredis.command.handler.SaddHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +50,7 @@ public class CommandDispatcher {
         handlers.put("LPOP", new LpopHandler(store));
         handlers.put("RPOP", new RpopHandler(store));
         handlers.put("LRANGE", new LrangeHandler(store));
+        handlers.put("SADD", new SaddHandler(store));
 
     }
 

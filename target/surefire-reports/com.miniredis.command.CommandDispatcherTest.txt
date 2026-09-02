@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.miniredis.command.CommandDispatcherTest
 -------------------------------------------------------------------------------
-Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.232 s -- in com.miniredis.command.CommandDispatcherTest
+Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.189 s -- in com.miniredis.command.CommandDispatcherTest
