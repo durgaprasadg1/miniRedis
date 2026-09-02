@@ -700,4 +700,56 @@ public class RedisStorageTest {
             store.shutDown();
         }
     }
+
+    @Test
+    void hashFieldExistsReturnsOneForExistingField() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.setHashField("user", "name", "ram");
+
+            assertEquals(
+                    1,
+                    store.hashFieldExists("user", "name"));
+
+        } finally {
+            store.shutdown();
+        }
+    }
+
+    @Test
+    void hashFieldExistsReturnsZeroForMissingField() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            assertEquals(
+                    0,
+                    store.hashFieldExists("user", "name"));
+
+            store.setHashField("user", "age", "20");
+
+            assertEquals(
+                    0,
+                    store.hashFieldExists("user", "name"));
+
+        } finally {
+            store.shutdown();
+        }
+    }
+
+    @Test
+    void hashFieldExistsThrowsWrongType() {
+        RedisStorage store = new RedisStorage();
+
+        try {
+            store.set("name", "ram");
+
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> store.hashFieldExists("name", "field"));
+
+        } finally {
+            store.shutdown();
+        }
+    }
 }
