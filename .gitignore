@@ -1,0 +1,44 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Compiled Java files
+*.class
+
+# Logs
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+.history/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Java crash dumps
+hs_err_pid*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Experiment outputs
+experiments/output/
+experiments/results/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example

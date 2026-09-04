@@ -6,7 +6,6 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-// import Entry
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,7 +28,7 @@ public class RedisStorage {
                                                                                                     // -> run
     }
 
-    public void set(String key, String value) {
+    public synchronized void set(String key, String value) {
         data.put(key, new Entry(DataType.STRING, value));
     }
 
@@ -68,7 +67,7 @@ public class RedisStorage {
 
     public synchronized int change(String key, int delta) {
 
-        Entry entry = data.get(key);
+        Entry entry = getLiveEntry(key);
         int number;
         if (entry == null) {
             number = 0;
@@ -96,13 +95,13 @@ public class RedisStorage {
             return entry;
         }
         if (System.currentTimeMillis() >= entry.getExpiresAt()) {
-            data.remove(key);
+            data.remove(key, entry);
             return null;
         }
         return entry;
     }
 
-    public int expire(String key, long seconds) {
+    public synchronized int expire(String key, long seconds) {
         Entry entry = getLiveEntry(key);
         if (entry == null) {
             return 0;
@@ -124,7 +123,7 @@ public class RedisStorage {
         return Math.max(0, (remaining + 999) / 1000);
     }
 
-    public int persist(String key) {
+    public synchronized int persist(String key) {
         Entry entry = getLiveEntry(key);
         if (entry == null)
             return 0;
@@ -205,28 +204,7 @@ public class RedisStorage {
         expirationExecutor.shutdownNow();
     }
 
-    List<String> getList(String key) {
-
-        Entry entry = getLiveEntry(key);
-
-        if (entry == null) {
-            return null;
-        }
-
-        if (entry.getType() != DataType.LIST) {
-            throw new IllegalStateException("WrongType");
-        }
-
-        return new ArrayList<>(
-                (Deque<String>) entry.getValue());
-    }
-
-    int rawSize() {
-
-        return data.size();
-    }
-
-    public int listLength(String key) {
+    public synchronized int listLength(String key) {
         Entry entry = getLiveEntry(key);
         if (entry == null)
             return 0;
@@ -328,7 +306,6 @@ public class RedisStorage {
         }
 
         HashSet<String> set = (HashSet<String>) entry.getValue();
-
         return set.remove(value) ? 1 : 0;
     }
 

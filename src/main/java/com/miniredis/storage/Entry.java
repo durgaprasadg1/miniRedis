@@ -4,7 +4,7 @@ public class Entry {
 
     private final DataType type;
     private Object value;
-    private long expiresAt;
+    private volatile long expiresAt;
 
     public Entry(DataType type, Object value) {
         this.type = type;

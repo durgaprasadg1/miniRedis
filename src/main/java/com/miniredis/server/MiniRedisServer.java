@@ -89,7 +89,6 @@ public class MiniRedisServer {
 
         executor.shutdownNow();
         store.shutDown();
-        
 
         System.out.println(
                 "Mini Redis server stopped");
@@ -102,8 +101,6 @@ public class MiniRedisServer {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true)) {
-
-            String request;
 
             Command command;
 

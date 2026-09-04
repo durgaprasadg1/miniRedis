@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.storage.RedisStorageTest" time="3.832" tests="53" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.miniredis.storage.RedisStorageTest" time="3.723" tests="53" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-26.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire17012949673120554164\surefirebooter-20260904152448509_3.jar C:\Users\PC\AppData\Local\Temp\surefire17012949673120554164 2026-09-04T15-24-48_265-jvmRun1 surefire-20260904152448509_1tmp surefire_0-20260904152448509_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\PC\AppData\Local\Temp\surefire16562346722858849996\surefirebooter-20260904163751164_3.jar C:\Users\PC\AppData\Local\Temp\surefire16562346722858849996 2026-09-04T16-37-50_973-jvmRun1 surefire-20260904163751164_1tmp surefire_0-20260904163751164_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\test-classes;C:\Users\PC\Desktop\Code\JAVA\Projects\mini-redis\target\classes;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter\5.14.0\junit-jupiter-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.14.0\junit-jupiter-api-5.14.0.jar;C:\Users\PC\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-commons\1.14.0\junit-platform-commons-1.14.0.jar;C:\Users\PC\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.14.0\junit-jupiter-params-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.14.0\junit-jupiter-engine-5.14.0.jar;C:\Users\PC\.m2\repository\org\junit\platform\junit-platform-engine\1.14.0\junit-platform-engine-1.14.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire17012949673120554164\surefirebooter-20260904152448509_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\PC\AppData\Local\Temp\surefire16562346722858849996\surefirebooter-20260904163751164_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -59,57 +59,57 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="shouldHandleNegativeIndexes" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
+  <testcase name="shouldHandleNegativeIndexes" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
   <testcase name="getSetMembersReturnsAllMembers" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="shouldRejectRangeOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.006"/>
-  <testcase name="shouldPushRight" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="getAllHashFieldsThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="setHashFieldCreatesAndUpdatesField" classname="com.miniredis.storage.RedisStorageTest" time="0.005"/>
-  <testcase name="shouldPushLeftInCorrectOrder" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="shouldPushLeftAndRight" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="deleteHashFieldReturnsZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.005"/>
-  <testcase name="getHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.005"/>
-  <testcase name="ttlShouldReturnMinusOneWithoutExpiration" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="getAllHashFieldsReturnsEmptyMapForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldDecreaseSizeAfterDelete" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldReturnFullList" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="deleteHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldIncrementMultipleTimes" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="shouldReturnPartialRange" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="shouldRejectRangeOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
+  <testcase name="shouldPushRight" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="getAllHashFieldsThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="setHashFieldCreatesAndUpdatesField" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldPushLeftInCorrectOrder" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldPushLeftAndRight" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="deleteHashFieldReturnsZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="getHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="ttlShouldReturnMinusOneWithoutExpiration" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="getAllHashFieldsReturnsEmptyMapForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldDecreaseSizeAfterDelete" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldReturnFullList" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="deleteHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="shouldIncrementMultipleTimes" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldReturnPartialRange" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
   <testcase name="shouldOverwriteExistingValue" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="getSetMembersReturnsEmptySetForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="hashFieldExistsReturnsOneForExistingField" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldReturnNumberOfKeys" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldPopRight" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldPopLeft" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="expireShouldReturnZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="shouldReturnNullForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="persistShouldRemoveExpiration" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="hashFieldExistsThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
-  <testcase name="getHashFieldReturnsNullWhenMissing" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="hashLengthThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.006"/>
-  <testcase name="changeShouldIncrement" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="getSetMembersReturnsEmptySetForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="hashFieldExistsReturnsOneForExistingField" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldReturnNumberOfKeys" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldPopRight" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldPopLeft" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="expireShouldReturnZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldReturnNullForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="persistShouldRemoveExpiration" classname="com.miniredis.storage.RedisStorageTest" time="0.0"/>
+  <testcase name="hashFieldExistsThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="getHashFieldReturnsNullWhenMissing" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="hashLengthThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="changeShouldIncrement" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
   <testcase name="hashFieldExistsReturnsZeroForMissingField" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="activeExpirationShouldRemoveExpiredEntries" classname="com.miniredis.storage.RedisStorageTest" time="2.501"/>
+  <testcase name="activeExpirationShouldRemoveExpiredEntries" classname="com.miniredis.storage.RedisStorageTest" time="2.503"/>
   <testcase name="shouldStoreAndRetrieveValue" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="getHashFieldReturnsValue" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="getSetMembersThrowsWrongTypeForString" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="removeExistingSetMember" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="hashLengthReturnsNumberOfFields" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="getHashFieldReturnsValue" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="getSetMembersThrowsWrongTypeForString" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
+  <testcase name="removeExistingSetMember" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="hashLengthReturnsNumberOfFields" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
   <testcase name="changeShouldRejectNonInteger" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
   <testcase name="shouldPushLeft" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
   <testcase name="shouldIncrementValue" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="getAllHashFieldsReturnsAllFields" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldDeleteExistingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="getAllHashFieldsReturnsAllFields" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="shouldDeleteExistingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
   <testcase name="shouldReturnZeroWhenDeletingMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
   <testcase name="ttlShouldReturnMinusTwoForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="shouldReturnZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="expiredKeyShouldBehaveAsMissing" classname="com.miniredis.storage.RedisStorageTest" time="1.104"/>
-  <testcase name="setHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.008"/>
-  <testcase name="shouldRejectPopOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
-  <testcase name="shouldReturnOneForExistingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="shouldRejectPushLeftOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="changeShouldDecrement" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
-  <testcase name="deleteHashFieldRemovesExistingField" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
-  <testcase name="shouldReturnNullWhenPoppingMissingList" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
+  <testcase name="shouldReturnZeroForMissingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="expiredKeyShouldBehaveAsMissing" classname="com.miniredis.storage.RedisStorageTest" time="1.103"/>
+  <testcase name="setHashFieldThrowsWrongType" classname="com.miniredis.storage.RedisStorageTest" time="0.004"/>
+  <testcase name="shouldRejectPopOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="shouldReturnOneForExistingKey" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="shouldRejectPushLeftOnString" classname="com.miniredis.storage.RedisStorageTest" time="0.002"/>
+  <testcase name="changeShouldDecrement" classname="com.miniredis.storage.RedisStorageTest" time="0.003"/>
+  <testcase name="deleteHashFieldRemovesExistingField" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
+  <testcase name="shouldReturnNullWhenPoppingMissingList" classname="com.miniredis.storage.RedisStorageTest" time="0.001"/>
 </testsuite>

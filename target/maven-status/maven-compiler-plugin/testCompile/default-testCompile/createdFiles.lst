@@ -1,3 +1,9 @@
+com\miniredis\integration\RedisTcpConcurrencyTest.class
 com\miniredis\command\CommandParserTest.class
 com\miniredis\command\CommandDispatcherTest.class
+com\miniredis\concurrency\ConcurrencyExperimentTest.class
+com\miniredis\concurrency\RedisStorageConcurrencyTest.class
+com\miniredis\integration\MultiClientIntegrationTest.class
 com\miniredis\storage\RedisStorageTest.class
+com\miniredis\integration\MiniRedisIntegrationTest.class
+com\miniredis\protocol\DecoderTest.class
