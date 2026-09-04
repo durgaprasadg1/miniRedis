@@ -24,6 +24,13 @@ import com.miniredis.command.handler.RpushHandler;
 import com.miniredis.command.handler.LpopHandler;
 import com.miniredis.command.handler.RpopHandler;
 import com.miniredis.command.handler.SaddHandler;
+import com.miniredis.command.handler.ScardHandler;
+import com.miniredis.command.handler.HsetHandler;
+import com.miniredis.command.handler.HgetHandler;
+import com.miniredis.command.handler.HdelHandler;
+import com.miniredis.command.handler.HexistsHandler;
+import com.miniredis.command.handler.HlenHandler;
+import com.miniredis.command.handler.HgetallHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,10 +60,17 @@ public class CommandDispatcher {
         handlers.put("LPOP", new LpopHandler(store));
         handlers.put("RPOP", new RpopHandler(store));
         handlers.put("LRANGE", new LrangeHandler(store));
+        handlers.put("SCARD", new ScardHandler(store));
         handlers.put("SADD", new SaddHandler(store));
         handlers.put("SREM", new SremHandler(store));
         handlers.put("SISMEMBER", new SismemberHandler(store));
         handlers.put("SMEMBERS", new SmembersHandler(store));
+        handlers.put("HSET", new HsetHandler(store));
+        handlers.put("HGET", new HgetHandler(store));
+        handlers.put("HDEL", new HdelHandler(store));
+        handlers.put("HEXISTS", new HexistsHandler(store));
+        handlers.put("HLEN", new HlenHandler(store));
+        handlers.put("HGETALL", new HgetallHandler(store));
 
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class CommandParser {
 
     public Command parse(String request) {
-        String[] parts = request.trim().split("\\s+", 3);
+        String[] parts = request.trim().split("\\s+");
 
         String name = parts[0].toUpperCase();
 

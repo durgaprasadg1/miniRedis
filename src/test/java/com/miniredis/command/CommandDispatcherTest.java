@@ -685,4 +685,54 @@ public class CommandDispatcherTest {
                         store.shutDown();
                 }
         }
+
+        @Test
+        void setWithTtl() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        assertEquals(
+                                        "OK",
+                                        dispatcher.execute(
+                                                        new Command("SET", List.of("name", "ram", "5"))));
+
+                        assertEquals(
+                                        "ram",
+                                        dispatcher.execute(
+                                                        new Command("GET", List.of("name"))));
+
+                        long ttl = Long.parseLong(
+                                        dispatcher.execute(
+                                                        new Command("TTL", List.of("name"))));
+
+                        assertTrue(ttl >= 1 && ttl <= 5);
+
+                } finally {
+                        store.shutDown();
+                }
+        }
+
+        @Test
+        void setWithoutTtl() {
+                RedisStorage store = new RedisStorage();
+
+                try {
+                        CommandDispatcher dispatcher = new CommandDispatcher(store);
+
+                        assertEquals(
+                                        "OK",
+                                        dispatcher.execute(
+                                                        new Command("SET", List.of("name", "ram"))));
+
+                        assertEquals(
+                                        "-1",
+                                        dispatcher.execute(
+                                                        new Command("TTL", List.of("name"))));
+
+                } finally {
+                        store.shutDown();
+                }
+        }
 }
